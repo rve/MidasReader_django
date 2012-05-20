@@ -1,0 +1,42 @@
+header {
+text-align: center;
+}
+nav {
+text-decoration: underline;
+color: blue;
+}
+.content, article
+{
+text-indent: 2em;
+line-height: 2;
+min-height: 2em;
+word-wrap: break-word;
+-ms-word-wrap: break-word;
+text-align: justify;
+text-justify: inter-ideograph;
+-webkit-hyphens: auto;
+-moz-hyphens: auto;
+-ms-hyphens: auto;
+hyphens: auto;
+}
+.page{
+position: relative;
+height: auto;
+width: 34em;
+padding: 5em 4.6875em;
+margin: 0 .5em 0 0;
+background: 
+white;
+border: 1px solid 
+#DDD;
+cursor: default;
+}
+.pagebutton {
+}
+#container {
+position: absolute;
+left:15%;
+}
+body {
+background:#D9DEF0;
+}
