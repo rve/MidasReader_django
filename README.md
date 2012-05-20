@@ -1,4 +1,4 @@
 MidasReader
 ===========
 
-an easy HTML5 reader
+An easy HTML5 reader
