@@ -20,10 +20,21 @@ def reader(request):
 def reader2(request, page):
     fp = open("/home/rve/Downloads/Book/past-core.txt")
     fp.seek((int(page)-1) *1000)
-    text =  fp.read(1000).decode('gb18030')
+    if fp.read(1) == '':
+        text = 'The end'
+    else:
+        text =  fp.read(1000).decode('gb18030')
+
+    next_page = str(int(page)+1)
+    prev_page = str(int(page)-1)
+    if prev_page == '0' : prev_page ='1'
+
     t = loader.get_template("2reader.html")
+
     c = Context({
         'text': text,
+        'next_page' : next_page,
+        'prev_page' : prev_page,
         })
     return HttpResponse(t.render(c))
 def display_meta(request):

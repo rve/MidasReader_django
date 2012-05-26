@@ -1,27 +1,50 @@
 <!DOCTYPE HTML>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Midas Reader</title>
-	<script type="text/javascript" src="/static/js/textSections.js"></script>
-	<script type="text/javascript" src="/static/js/editor.js"></script>
-	<link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-</head>
-<body>
-  <header> <h1>Midas Reader</h1> </header>
-{% if text %} <div id="container">
-<div class="page" id="1" style="display: block;">
-<div class="content">
-  {{text}}
-</div>
-<a herf="/">Home</a>
-<a href="/reader/{{int(page)+1}}">Next</a>
-<input type="button" class="pagebutton button" onclick="return prevPage('0')" value="Prev">
-</div>
-</div>
-{% else %}
-<div class="content">No text available</div>
-{% endif %}
-</body>
-</html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Midas Reader</title>
+    <script type="text/javascript" src="/static/js/textSections.js"></script>
+    <script type="text/javascript" src="/static/js/editor.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+    <script src="/static/js/notepad.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/static/css/notepad.css" />
+  </head>
+  <body onload="SetArray(100)" >
+    <header> <h1>Midas Reader</h1> </header>
+    {% if text %} <div id="container">
+      <div class="page" id="1" style="display: block;">
+        <div class="content">
+          {{text}}
+        </div>
+        <div id="buttonlist">
+          <hr/><hr/>
+          <a href="/reader/{{next_page}}">Next</a> 
+          <a href="/reader/{{prev_page}}">Prev</a>
+          <div class="pagenum">Page:  {{prev_page}}</div>
+          <input onclick="ShowIt()" type="button"  value="Pad" id="VId"/>
+          <div id="divId" align="center" style="display:none"/>
 
+            <canvas id="window" width="450" height="190">
+              Your browser doesn't support canvas.
+            </canvas>
+            <img src="/static/pic/hide.png" onclick="HideIt()" width="20" height="20" id="pic"/>
+
+            <div id="divId2">
+              <input onclick="Selectall()" type="button" value="All"/>
+              Page:
+              <input onkeyup="this.value=this.value.replace(/[^\d]/g,'') " onafterpaste="this.value=this.value.replace(/[^\d]/g,'') " onchange="SetPos(this.value)" type="text" name="pagenum" size="1" id="pageId"/>
+              AddText:
+              <input type="text" name="addtext" id="addId" size="7"/>
+              <input onclick="AddText(document.all.pagenum.value,document.all.addtext.value)" type="button" value="AddText"/>
+              <br />
+              <textarea onchange="SetPage()" id="txtid" rows="10" cols="55" ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="content">No text available</div>
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,35 @@
+#divId
+{ 
+  position:fixed;
+  top:100px;
+  left:900px;
+  z-index=1;
+  font-style:微软雅黑;
+}
+#VId
+{
+  position:fixed;
+  top:100px;
+  left:1050px;
+}
+#window
+{
+  position:absolute;
+  top:0px;
+  left:0px;
+  z-index=1;
+}
+#divId2
+{
+  position:absolute;
+  top:2px;
+  left:8px;
+  z-index=2;
+}
+#pic
+{
+  position:absolute;
+  top:0px;
+  left:411px;
+  z-index=2;
+}
