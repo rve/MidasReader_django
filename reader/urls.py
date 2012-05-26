@@ -7,11 +7,13 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'reader.views.home', name='home'),
-    url(r'^reader/', 'read.views.reader'),
+    url(r'^reader/$', 'read.views.reader'),
+    url(r'^reader/(?P<page>\d+)/$', 'read.views.reader2'),
     url(r'^index/','read.views.index'),
     url(r'^test/', 'read.views.display_meta'),
     url(r'^search-form/$', 'read.views.search_form'),
     url(r'^search/$','read.views.search'),
+    url(r'^image_data','read.views.my_image'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

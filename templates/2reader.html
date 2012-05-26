@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Midas Reader</title>
+	<script type="text/javascript" src="/static/js/textSections.js"></script>
+	<script type="text/javascript" src="/static/js/editor.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+</head>
+<body>
+  <header> <h1>Midas Reader</h1> </header>
+{% if text %} <div id="container">
+<div class="page" id="1" style="display: block;">
+<div class="content">
+  {{text}}
+</div>
+<a herf="/">Home</a>
+<a href="/reader/{{int(page)+1}}">Next</a>
+<input type="button" class="pagebutton button" onclick="return prevPage('0')" value="Prev">
+</div>
+</div>
+{% else %}
+<div class="content">No text available</div>
+{% endif %}
+</body>
+</html>
+

@@ -1,8 +1,12 @@
+#-*- coding: UTF-8 -*- 
 from django.shortcuts import render_to_response
 from django.template import Context, loader
 from read.models import Book
 from django.http import HttpResponse
 
+def my_image(request):
+    image_data = open("/home/rve/Pictures/screenshot.jpg","rb").read()
+    return HttpResponse(image_data, mimetype="image/jpg")
 
 def index(request):
     return render_to_response('reader/index.html')
@@ -11,6 +15,15 @@ def reader(request):
     t = loader.get_template("reader/reader.html")
     c = Context({
         'latest_book_list': latest_book_list,
+        })
+    return HttpResponse(t.render(c))
+def reader2(request, page):
+    fp = open("/home/rve/Downloads/Book/past-core.txt")
+    fp.seek((int(page)-1) *1000)
+    text =  fp.read(1000).decode('gb18030')
+    t = loader.get_template("2reader.html")
+    c = Context({
+        'text': text,
         })
     return HttpResponse(t.render(c))
 def display_meta(request):
