@@ -18,15 +18,17 @@ def reader(request):
         })
     return HttpResponse(t.render(c))
 def reader2(request, page):
-    fp = open("/home/rve/Downloads/Book/past-core.txt")
+    fp = open("static/txt/utf8.txt")
     fp.seek((int(page)-1) *1000)
+    prev_page = str(int(page)-1)
     if fp.read(1) == '':
         text = 'The end'
+        next_page = page 
     else:
-        text =  fp.read(1000).decode('gb18030')
+        text =  fp.read(1000)
+        next_page = str(int(page)+1)
 
-    next_page = str(int(page)+1)
-    prev_page = str(int(page)-1)
+    fp.close()
     if prev_page == '0' : prev_page ='1'
 
     t = loader.get_template("2reader.html")

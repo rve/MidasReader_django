@@ -5,15 +5,14 @@
     <title>Midas Reader</title>
     <script type="text/javascript" src="/static/js/textSections.js"></script>
     <script type="text/javascript" src="/static/js/editor.js"></script>
+    <script type="text/javascript"> var page_num = {{prev_page}};</script>
     <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
     <script src="/static/js/notepad.js" type="text/javascript"></script>
     <link rel="stylesheet" href="/static/css/notepad.css" />
   </head>
   <body onload="SetArray(100)" >
     <header> <h1>Midas Reader</h1> </header>
-    {% if text %} <div id="container">
-      <div class="page" id="1" style="display: block;">
-        <div class="content">
+    {% if text %} <div id="container"> <div class="page" id="1" style="display: block;"> <div class="content">
           {{text}}
         </div>
         <div id="buttonlist">
@@ -31,11 +30,9 @@
 
             <div id="divId2">
               <input onclick="Selectall()" type="button" value="All"/>
-              Page:
-              <input onkeyup="this.value=this.value.replace(/[^\d]/g,'') " onafterpaste="this.value=this.value.replace(/[^\d]/g,'') " onchange="SetPos(this.value)" type="text" name="pagenum" size="1" id="pageId"/>
               AddText:
               <input type="text" name="addtext" id="addId" size="7"/>
-              <input onclick="AddText(document.all.pagenum.value,document.all.addtext.value)" type="button" value="AddText"/>
+              <input onclick="AddText(document.all.page_num,document.all.addtext.value)" type="button" value="AddText"/>
               <br />
               <textarea onchange="SetPage()" id="txtid" rows="10" cols="55" ></textarea>
             </div>

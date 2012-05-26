@@ -29,7 +29,7 @@
 #pic
 {
   position:absolute;
-  top:0px;
-  left:411px;
+  top:0;
+  right:50%;
   z-index=2;
 }
