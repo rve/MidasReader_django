@@ -24,7 +24,7 @@ function goon()
 	//timer=setInterval(scrollstart,3000);
 	timer=setInterval(scrollstart,100);
 	s.scrollTop=lastScrollTop;
-	document.getElementById("wholeId").style.backgroundColor="#e5eecc";
+	document.getElementById("wholeId").style.backgroundColor=blue;
 }
 
 function scrollstart()
