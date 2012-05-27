@@ -16,6 +16,7 @@ input.flip
 }
 div.whole
 {
+	top:0px;
 	width:100%;
 	text-align:center;
 	position:fixed;
