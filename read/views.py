@@ -1,4 +1,5 @@
 #-*- coding: UTF-8 -*- 
+import codecs
 from django.shortcuts import render_to_response
 from django.template import Context, loader
 from read.models import Book
@@ -18,14 +19,15 @@ def reader(request):
         })
     return HttpResponse(t.render(c))
 def reader2(request, page):
-    fp = open("static/txt/utf8.txt")
+    fp = codecs.open("static/txt/utf8.txt")
     fp.seek((int(page)-1) *1000)
     prev_page = str(int(page)-1)
     if fp.read(1) == '':
         text = 'The end'
         next_page = page 
     else:
-        text =  fp.read(1000)
+        fp.seek((int(page)-1) *1000)
+        text =  ( fp.read(1000) )
         next_page = str(int(page)+1)
 
     fp.close()
