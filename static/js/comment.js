@@ -11,7 +11,7 @@ function init()
 	}
 }
 
-var timer=0,timer2=1,sn=0,lastScrollTop;
+var timer=0,timer2=1,sn=20,lastScrollTop;
 function stop()
 {
 	lastScrollTop=s.scrollTop;
@@ -31,6 +31,11 @@ function scrollstart()
 {
 	if (s.scrollTop>=20*(max-1))
 	{
+		if (sn<40)
+		{
+			sn++;
+			return ;
+		}
 		s.scrollTop=0;
 		nownum=1;
 		sn=20;
