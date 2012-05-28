@@ -30,6 +30,7 @@ def reader(request, book_id, page):
         fp.seek((int(page)-1) *1000)
         text =  ( fp.read(1000) )
         next_page = str(int(page)+1)
+
     if prev_page == '0' : prev_page ='1'
 
     fp.close()
@@ -40,6 +41,7 @@ def reader(request, book_id, page):
         'text': text,
         'next_page' : next_page,
         'prev_page' : prev_page,
+        'current_page':page,
         'book_id' : book_id,
         })
     return HttpResponse(t.render(c))
