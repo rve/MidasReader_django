@@ -16,12 +16,13 @@ function stop()
 {
 	lastScrollTop=s.scrollTop;
 	clearInterval(timer);
-	clearInterval(timer2);
+	//clearInterval(timer2);
 	document.getElementById("wholeId").style.backgroundColor="#ccc";
 }
 function goon()
 {
-	timer=setInterval(scrollstart,3000);
+	//timer=setInterval(scrollstart,3000);
+	timer=setInterval(scrollstart,30);
 	s.scrollTop=lastScrollTop;
 	document.getElementById("wholeId").style.backgroundColor="#e5eecc";
 }
@@ -37,7 +38,17 @@ function scrollstart()
 		$(".agree").val("Agree("+agreeNum[nownum].toString(10)+")");
 		$(".against").val("Against("+againstNum[nownum].toString(10)+")");
 	}
-	else timer2=setInterval(scrollstart2,50);
+	else
+	{
+		s.scrollTop++;
+		if (s.scrollTop % 20 == 0)
+		{
+			nownum++;
+			$(".agree").val("Agree("+agreeNum[nownum].toString(10)+")");
+			$(".against").val("Against("+againstNum[nownum].toString(10)+")");
+		}
+	}
+	//else timer2=setInterval(scrollstart2,50);
 }
 
 function scrollstart2()
@@ -75,7 +86,8 @@ $(document).ready(function(){
 				s.scrollTop=lastScrollTop;
 				$(".flip").val("Hide");
 				document.getElementById("wholeId").style.backgroundColor="#e5eecc";
-				timer=setInterval(scrollstart,3000);
+				//timer=setInterval(scrollstart,3000);
+				timer=setInterval(scrollstart,30);
 			}
 			else
 			{
@@ -83,7 +95,7 @@ $(document).ready(function(){
 				$(".flip").val("Show");
 				document.getElementById("wholeId").style.backgroundColor="#FFFFFF";
 				clearInterval(timer);
-				clearInterval(timer2);
+				//clearInterval(timer2);
 			}
 			a=(a+1) % 2;
 		});
