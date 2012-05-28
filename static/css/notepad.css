@@ -1,10 +1,5 @@
 #noteId
 { 
-  position:fixed;
   text-align:center;
-  background:"#D9DEF0";
-  top:35%;
-  left:72%;
-  z-index=1;
   font-style:微软雅黑;
 }
