@@ -1,4 +1,4 @@
-function init()
+function init2()
 {
 	s=document.getElementById("scrollId");
 	agreeNum=new Array(max+1);
@@ -11,7 +11,7 @@ function init()
 	}
 }
 
-var timer=0,timer2=1,sn=20,lastScrollTop;
+var timer=0,timer2=1,sn=20,lastScrollTop=0;
 function stop()
 {
 	lastScrollTop=s.scrollTop;
@@ -66,7 +66,9 @@ function getRandom(n)
 }
 
 var a=0,s,agreeNum,againstNum,max=14,nownum=1;
-$(document).ready(function(){
+$(document).ready(function()
+        {
+            init2();
 		$(".flip").click(function()
 		{
 			$(".scroll").slideToggle("slow");
