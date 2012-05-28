@@ -98,7 +98,62 @@ The path of the book cover. Notice that this will be resolved by django, so use 
 txt_path = models.CharField(max_length=100)
 The path of the txt_versioned book. This will NOT be resolved by django and actually be processed by read/views.py,so use real path.
 
+comment.js
+    init2()
+        Initallize comment bar and numbers of agree and agianst
+    stop()
+        Stop comment bar scrolling when mouse is over it
+    goon()
+        Let comment bar continue to scroll when mouse isn't over it
+    scrollstart()
+        Invoke it continuesly to scroll comment
+    getRandom()
+        Get a random number
 
+
+noetpad.js
+    SetPos(page_num)
+        Find page position in textarea according page_num
+    SetPage()
+        Initallize the array of the start position of each page
+    AddText()
+        Add text to textarea
+    SelectAll()
+        Select all information in textarea
+    kmp(str,pat)
+        To find the position of pat in str
+    
+word_cloud.js
+    Word()
+        To creat objects of words
+    Rectangle()
+        To creat objects of rectangles
+    Ponit()
+        To creat objects of points
+    BItree()
+        Class of two-dimensional tree array
+    dist()
+        Get distance between two points
+    BublleSort()
+        Sort the array of word according each font-size
+    init()
+        Initallize the array of word
+    guessX() guessY()
+        Guess how big is the size of the word
+    updateBItree()
+        Update two-dimensional tree array
+    canPush()
+        Determine if the rectangle of word can be put the word
+    getRect()
+        Search the size of the rectangle of words
+    isBetterPoint() getBestPoint()
+        Find the best position to put the word
+    splitUnitRect() splitRect() 
+        To split rectangles after put the word
+    randomColor()
+        Set a kind of random color to each word
+    draw()
+        To draw the word cloud on the canvas
 
 
 
