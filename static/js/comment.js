@@ -30,11 +30,12 @@ function scrollstart()
 	{
 		s.scrollTop=0;
 		nownum=1;
+		sn=0;
+		clearInterval(timer2);
 		$(".agree").val("Agree("+agreeNum[nownum].toString(10)+")");
 		$(".against").val("Against("+againstNum[nownum].toString(10)+")");
 	}
 	else timer2=setInterval(scrollstart2,50);
-	alert(nownum);
 }
 
 function scrollstart2()
