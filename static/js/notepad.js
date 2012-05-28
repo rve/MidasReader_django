@@ -118,6 +118,11 @@ function kmp(str,pat)//find pat in str,return position
 var comment_flag=0;
 $(document).ready(function()
         {
+            if (window.localStorage.txtid)
+              {
+                document.getElementById("txtid").value = window.localStorage.txtid;
+              }
+
             $("#T_N").click(function()
                 {
                     $("#noteId").slideToggle("slow");
@@ -127,5 +132,8 @@ $(document).ready(function()
                 })
             $(".save").click(function()
                 {
+                  var text_value = document.getElementById("txtid").value;
+                  window.localStorage.txtid = text_value;
+                  console.log(window.localStorage.txtid);
                 })
         })

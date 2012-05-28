@@ -11,6 +11,7 @@ class Book(models.Model):
         return self.book_name
 class tag(models.Model):
     tag_name = models.CharField(max_length=100)
+    
     def __unicode__(self):
         return self.tag_name
 class user(models.Model):
