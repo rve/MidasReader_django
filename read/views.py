@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response
 from django.template import Context, loader
 from read.models import Book
 from django.http import HttpResponse
+from django.http import Http404
 
 def my_image(request):
     image_data = open("/home/rve/Pictures/screenshot.jpg","rb").read()
@@ -11,15 +12,35 @@ def my_image(request):
 
 def index(request):
     return render_to_response('reader/index.html')
-def reader(request):
-    latest_book_list = Book.objects.all()
-    t = loader.get_template("reader/reader.html")
+def reader(request, book_id, page):
+    try:
+        book_instance = Book.objects.get(pk=book_id)
+    except Book.DoesNotExist:
+        raise Http404
+    fp = open(book_instance.txt_path)
+    fp.seek((int(page)-1) *1000)
+    prev_page = str(int(page)-1)
+    if fp.read(1) == '':
+        text = 'The end'
+        next_page = page 
+    else:
+        fp.seek((int(page)-1) *1000)
+        text =  ( fp.read(1000) )
+        next_page = str(int(page)+1)
+    if prev_page == '0' : prev_page ='1'
+
+    fp.close()
+
+#load template
+    t = loader.get_template("reader.html")
     c = Context({
-        'latest_book_list': latest_book_list,
+        'text': text,
+        'next_page' : next_page,
+        'prev_page' : prev_page,
         })
     return HttpResponse(t.render(c))
 def reader2(request, page):
-    fp = codecs.open("static/txt/utf8.txt")
+    fp = open("static/txt/past-core.txt")
     fp.seek((int(page)-1) *1000)
     prev_page = str(int(page)-1)
     if fp.read(1) == '':

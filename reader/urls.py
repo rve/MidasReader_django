@@ -7,8 +7,9 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'reader.views.home', name='home'),
-    url(r'^reader/$', 'read.views.reader'),
+    url(r'^reader/$', 'read.views.index'),
     url(r'^reader/(?P<page>\d+)/$', 'read.views.reader2'),
+    url(r'^reader/(?P<book_id>\d+)/(?P<page>\d+)/$', 'read.views.reader'),
     url(r'^index/','read.views.index'),
     url(r'^test/', 'read.views.display_meta'),
     url(r'^search-form/$', 'read.views.search_form'),
