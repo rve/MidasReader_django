@@ -13,10 +13,13 @@ def my_image(request):
 def index(request):
     return render_to_response('reader/index.html')
 def reader(request, book_id, page):
+#get book
     try:
         book_instance = Book.objects.get(pk=book_id)
     except Book.DoesNotExist:
         raise Http404
+
+#read text of the book
     fp = open(book_instance.txt_path)
     fp.seek((int(page)-1) *1000)
     prev_page = str(int(page)-1)
@@ -37,6 +40,7 @@ def reader(request, book_id, page):
         'text': text,
         'next_page' : next_page,
         'prev_page' : prev_page,
+        'book_id' : book_id,
         })
     return HttpResponse(t.render(c))
 def reader2(request, page):
