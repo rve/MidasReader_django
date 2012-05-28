@@ -39,7 +39,9 @@ function scrollstart()
 		$(".against").val("Against("+againstNum[nownum].toString(10)+")");
 	}
 	else
+	if (sn < 20)
 	{
+		sn++
 		s.scrollTop++;
 		if (s.scrollTop % 20 == 0)
 		{
@@ -47,6 +49,11 @@ function scrollstart()
 			$(".agree").val("Agree("+agreeNum[nownum].toString(10)+")");
 			$(".against").val("Against("+againstNum[nownum].toString(10)+")");
 		}
+	}
+	else
+	{
+		sn++;
+		if (sn>=40) sn=0;
 	}
 	//else timer2=setInterval(scrollstart2,50);
 }
