@@ -40,3 +40,9 @@ left:15%;
 body {
 background:#D9DEF0;
 }
+.buttonList
+{
+    position:fixed;
+    left:70%;
+    top:20%;
+}
