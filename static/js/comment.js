@@ -24,7 +24,7 @@ function goon()
 	//timer=setInterval(scrollstart,3000);
 	timer=setInterval(scrollstart,100);
 	s.scrollTop=lastScrollTop;
-	document.getElementById("wholeId").style.backgroundColor=blue;
+	document.getElementById("wholeId").style.backgroundColor="#D9DEF0";
 }
 
 function scrollstart()
@@ -97,7 +97,7 @@ $(document).ready(function(){
 			{
 				s.scrollTop=lastScrollTop;
 				$(".flip").val("Hide");
-				document.getElementById("wholeId").style.backgroundColor="#e5eecc";
+				document.getElementById("wholeId").style.backgroundColor="#D9DEF0";
 				//timer=setInterval(scrollstart,3000);
 				timer=setInterval(scrollstart,100);
 			}
@@ -105,7 +105,6 @@ $(document).ready(function(){
 			{
 				lastScrollTop=s.scrollTop;
 				$(".flip").val("Show");
-				document.getElementById("wholeId").style.backgroundColor="#FFFFFF";
 				clearInterval(timer);
 				//clearInterval(timer2);
 			}
