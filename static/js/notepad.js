@@ -125,4 +125,7 @@ $(document).ready(function()
                     else $("#T_N").val("Take Note");
                     comment_flag=(comment_flag+1)%2;
                 })
+            $(".save").click(function()
+                {
+                })
         })
