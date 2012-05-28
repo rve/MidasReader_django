@@ -11,7 +11,13 @@ def my_image(request):
     return HttpResponse(image_data, mimetype="image/jpg")
 
 def index(request):
-    return render_to_response('reader/index.html')
+    book_list = Book.objects.all()
+#load template
+    t = loader.get_template("index.html")
+    c = Context({
+        'book_list': book_list,
+        })
+    return HttpResponse(t.render(c))
 def reader(request, book_id, page):
 #get book
     try:
