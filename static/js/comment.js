@@ -22,7 +22,7 @@ function stop()
 function goon()
 {
 	//timer=setInterval(scrollstart,3000);
-	timer=setInterval(scrollstart,30);
+	timer=setInterval(scrollstart,100);
 	s.scrollTop=lastScrollTop;
 	document.getElementById("wholeId").style.backgroundColor="#e5eecc";
 }
@@ -87,7 +87,7 @@ $(document).ready(function(){
 				$(".flip").val("Hide");
 				document.getElementById("wholeId").style.backgroundColor="#e5eecc";
 				//timer=setInterval(scrollstart,3000);
-				timer=setInterval(scrollstart,30);
+				timer=setInterval(scrollstart,100);
 			}
 			else
 			{
