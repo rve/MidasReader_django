@@ -1,35 +1,10 @@
-#divId
+#noteId
 { 
   position:fixed;
+  text-align:center;
   background:"#D9DEF0";
   top:35%;
   left:72%;
   z-index=1;
   font-style:微软雅黑;
-}
-#VId
-{
-  top:100px;
-  left:1050px;
-}
-#window
-{
-  position:absolute;
-  top:0px;
-  left:0px;
-  z-index=1;
-}
-#divId2
-{
-  position:absolute;
-  top:2px;
-  left:8px;
-  z-index=2;
-}
-#pic
-{
-  position:absolute;
-  top:0;
-  right:50%;
-  z-index=2;
 }
