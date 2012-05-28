@@ -14,6 +14,7 @@ function init()
 var timer=0,timer2=1,sn=0,lastScrollTop;
 function stop()
 {
+	lastScrollTop=s.scrollTop;
 	clearInterval(timer);
 	clearInterval(timer2);
 	document.getElementById("wholeId").style.backgroundColor="#ccc";
@@ -21,6 +22,7 @@ function stop()
 function goon()
 {
 	timer=setInterval(scrollstart,3000);
+	s.scrollTop=lastScrollTop;
 	document.getElementById("wholeId").style.backgroundColor="#e5eecc";
 }
 
