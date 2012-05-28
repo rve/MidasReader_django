@@ -1,6 +1,7 @@
 #divId
 { 
   position:fixed;
+  background:"#D9DEF0";
   top:35%;
   left:72%;
   z-index=1;

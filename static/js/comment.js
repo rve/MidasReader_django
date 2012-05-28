@@ -16,12 +16,10 @@ function stop()
 {
 	lastScrollTop=s.scrollTop;
 	clearInterval(timer);
-	//clearInterval(timer2);
 	document.getElementById("wholeId").style.backgroundColor="#ccc";
 }
 function goon()
 {
-	//timer=setInterval(scrollstart,3000);
 	timer=setInterval(scrollstart,100);
 	s.scrollTop=lastScrollTop;
 	document.getElementById("wholeId").style.backgroundColor="#D9DEF0";
@@ -60,25 +58,6 @@ function scrollstart()
 		sn++;
 		if (sn>=40) sn=0;
 	}
-	//else timer2=setInterval(scrollstart2,50);
-}
-
-function scrollstart2()
-{
-	if (sn<20)
-	{
-		sn++;
-		s.scrollTop++;
-	}
-	else
-	{
-		sn=0;
-		nownum++;
-		if (nownum>max) nownum=1;
-		$(".agree").val("Agree("+agreeNum[nownum].toString(10)+")");
-		$(".against").val("Against("+againstNum[nownum].toString(10)+")");
-		clearInterval(timer2);
-	}
 }
 
 function getRandom(n)
@@ -96,17 +75,15 @@ $(document).ready(function(){
 			if (a==0)
 			{
 				s.scrollTop=lastScrollTop;
-				$(".flip").val("Hide");
+				$(".flip").val("Hide comments");
 				document.getElementById("wholeId").style.backgroundColor="#D9DEF0";
-				//timer=setInterval(scrollstart,3000);
 				timer=setInterval(scrollstart,100);
 			}
 			else
 			{
 				lastScrollTop=s.scrollTop;
-				$(".flip").val("Show");
+				$(".flip").val("Show comments");
 				clearInterval(timer);
-				//clearInterval(timer2);
 			}
 			a=(a+1) % 2;
 		});

@@ -24,16 +24,13 @@
                     <div class="pagenum">Page:  {{prev_page}}</div>
                     <div id="divId" align="center" style="display:none"/>
 
-                        <canvas id="window" width="450" height="190">
-                        Your browser doesn't support canvas.
-                        </canvas>
                         <img src="/static/pic/hide.png" onclick="HideIt()" width="20" height="20" id="pic"/>
 
                         <div id="divId2">
-                            <input onclick="Selectall()" type="button" value="All"/>
-                            AddText:
+                            <input onclick="Selectall()" type="button" value="SelectAll"/>
+                            Add Note:
                             <input type="text" name="addtext" id="addId" size="7"/>
-                            <input onclick="AddText(document.all.page_num,document.all.addtext.value)" type="button" value="AddText"/>
+                            <input onclick="AddText(page_num,document.all.addtext.value)" type="button" value="Add"/>
                             <br />
                             <textarea onchange="SetPage()" id="txtid" rows="10" cols="55" ></textarea>
                         </div>
@@ -64,9 +61,9 @@
                         <br/>
                         <a href="/reader/{{prev_page}}">Prev</a>
                         <br/>
-                        <input type="button" class="flip" value="Show"/>
+                        <input type="button" class="flip" value="Show comments"/>
                         <br/>
-                        <input onclick="ShowIt()" type="button"  value="Pad" id="VId"/>
+                        <input onclick="ShowIt()" type="button"  value="Take Note" id="VId"/>
                         <br/>
                     </div>
                     {% else %}

@@ -57,8 +57,6 @@ function SetPage()//initialize
 //***************************SetArray*************************//
 function SetArray(num)
 {
-  document.getElementById("window").getContext("2d").fillStyle="#FFDEAD";
-  document.getElementById("window").getContext("2d").fillRect(0,0,430,190);
   maxpage=num;
   pagestart=new Array(maxpage);
   for (var i=0;i<maxpage;i++) pagestart[i]=-1;
