@@ -34,6 +34,7 @@ function scrollstart()
 		$(".against").val("Against("+againstNum[nownum].toString(10)+")");
 	}
 	else timer2=setInterval(scrollstart2,50);
+	alert(nownum);
 }
 
 function scrollstart2()
