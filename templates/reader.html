@@ -1,76 +1,76 @@
 <!DOCTYPE HTML>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Midas Reader</title>
-    <script type="text/javascript" src="/static/js/textSections.js"></script>
-    <script type="text/javascript" src="/static/js/editor.js"></script>
-    <script type="text/javascript"> var page_num = {{prev_page}};</script>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-    <script src="/static/js/notepad.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="/static/css/notepad.css" />
-    <script type="text/javascript" src="/static/js/jquery.js"></script>
-    <script type="text/javascript" src="/static/js/comment.js"></script>
-    <link rel="stylesheet" href="/static/css/comment.css" />
-  </head>
-  <body onload="SetArray(100);init();" >
-    <header> <h1>Midas Reader</h1> </header>
-    {% if text %} <div id="container"> <div class="page" id="1" style="display: block;"> <div class="content">
-          {{text}}
-        </div>
-        <div id="buttonlist">
-          <hr/><hr/>
-          <a href="/reader/{{next_page}}">Next</a> 
-          <a href="/reader/{{prev_page}}">Prev</a>
-          <div class="pagenum">Page:  {{prev_page}}</div>
-          <input onclick="ShowIt()" type="button"  value="Pad" id="VId"/>
-          <div id="divId" align="center" style="display:none"/>
+    <head>
+        <meta charset="UTF-8">
+        <title>Midas Reader</title>
+        <script type="text/javascript" src="/static/js/textSections.js"></script>
+        <script type="text/javascript" src="/static/js/editor.js"></script>
+        <script type="text/javascript"> var page_num = {{prev_page}};</script>
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+        <script src="/static/js/notepad.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="/static/css/notepad.css" />
+        <script type="text/javascript" src="/static/js/jquery.js"></script>
+        <script type="text/javascript" src="/static/js/comment.js"></script>
+        <link rel="stylesheet" href="/static/css/comment.css" />
+    </head>
+    <body onload="SetArray(100);init();" >
+        <br/>
+        <header> <h1>Midas Reader</h1> </header>
+        {% if text %} <div id="container"> <div class="page" id="1" style="display: block;"> <div class="content">
+                    {{text}}
+                </div>
+                <div id="buttonlist">
+                    <hr/><hr/>
+                    <div class="pagenum">Page:  {{prev_page}}</div>
+                    <div id="divId" align="center" style="display:none"/>
 
-            <canvas id="window" width="450" height="190">
-              Your browser doesn't support canvas.
-            </canvas>
-            <img src="/static/pic/hide.png" onclick="HideIt()" width="20" height="20" id="pic"/>
+                        <canvas id="window" width="450" height="190">
+                        Your browser doesn't support canvas.
+                        </canvas>
+                        <img src="/static/pic/hide.png" onclick="HideIt()" width="20" height="20" id="pic"/>
 
-            <div id="divId2">
-              <input onclick="Selectall()" type="button" value="All"/>
-              AddText:
-              <input type="text" name="addtext" id="addId" size="7"/>
-              <input onclick="AddText(document.all.page_num,document.all.addtext.value)" type="button" value="AddText"/>
-              <br />
-              <textarea onchange="SetPage()" id="txtid" rows="10" cols="55" ></textarea>
-            </div>
-          </div>
+                        <div id="divId2">
+                            <input onclick="Selectall()" type="button" value="All"/>
+                            AddText:
+                            <input type="text" name="addtext" id="addId" size="7"/>
+                            <input onclick="AddText(document.all.page_num,document.all.addtext.value)" type="button" value="AddText"/>
+                            <br />
+                            <textarea onchange="SetPage()" id="txtid" rows="10" cols="55" ></textarea>
+                        </div>
+                    </div>
 
-          <div class="whole" id="wholeId" onmouseover="stop()" onmouseout="goon()">
-            <div id="scrollId" class="scroll">
-              <div class="scroll1">This is comment:1</div>
-              <div class="scroll2">This is comment:2</div>
-              <div class="scroll3">This is comment:3</div>
-              <div class="scroll5">This is comment:4</div>
-              <div class="scroll6">This is comment:5</div>
-              <div class="scroll6">This is comment:6</div>
-              <div class="scroll7">This is comment:7</div>
-              <div class="scroll8">This is comment:8</div>
-              <div class="scroll9">This is comment:9</div>
-              <div class="scroll10">This is comment:10</div>
-              <div class="scroll11">This is comment:11</div>
-              <div class="scroll12">This is comment:12</div>
-              <div class="scroll13">This is comment:13</div>
-              <div class="scroll14">This is comment:14</div>
-            </div>
-            <input type="button" class="agree" value="Agree(0)"/>
-            <input type="button" class="against" value="Against(0)"/>
-          </div>
-          <input type="button" class="flip" value="Show" >
-        </body>
-      </html>
-
-
-    </div>
-  </div>
-</div>
-{% else %}
-<div class="content">No text available</div>
-{% endif %}
-  </body>
-</html>
+                    <div class="whole" id="wholeId" onmouseover="stop()" onmouseout="goon()">
+                        <div id="scrollId" class="scroll">
+                            <div class="scroll1">This is comment:1</div>
+                            <div class="scroll2">This is comment:2</div>
+                            <div class="scroll3">This is comment:3</div>
+                            <div class="scroll5">This is comment:4</div>
+                            <div class="scroll6">This is comment:5</div>
+                            <div class="scroll6">This is comment:6</div>
+                            <div class="scroll7">This is comment:7</div>
+                            <div class="scroll8">This is comment:8</div>
+                            <div class="scroll9">This is comment:9</div>
+                            <div class="scroll10">This is comment:10</div>
+                            <div class="scroll11">This is comment:11</div>
+                            <div class="scroll12">This is comment:12</div>
+                            <div class="scroll13">This is comment:13</div>
+                            <div class="scroll14">This is comment:14</div>
+                        </div>
+                        <input type="button" class="agree" value="Agree(0)"/>
+                        <input type="button" class="against" value="Against(0)"/>
+                    </div>
+                    <div class="buttonList">
+                        <a href="/reader/{{next_page}}">Next</a>
+                        <br/>
+                        <a href="/reader/{{prev_page}}">Prev</a>
+                        <br/>
+                        <input type="button" class="flip" value="Show"/>
+                        <br/>
+                        <input onclick="ShowIt()" type="button"  value="Pad" id="VId"/>
+                        <br/>
+                    </div>
+                    {% else %}
+                    <div class="content">Please refresh.</div>
+                    {% endif %}
+                </body>
+            </html>

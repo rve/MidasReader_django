@@ -1,14 +1,13 @@
 #divId
 { 
   position:fixed;
-  top:100px;
-  left:900px;
+  top:35%;
+  left:72%;
   z-index=1;
   font-style:微软雅黑;
 }
 #VId
 {
-  position:fixed;
   top:100px;
   left:1050px;
 }
