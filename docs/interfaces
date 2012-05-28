@@ -5,7 +5,6 @@ Fields
 username
 Required. 30 characters or fewer. Alphanumeric characters only (letters, digits and underscores).
 
-Changed in Django 1.2: Usernames may now contain @, +, . and - characters.
 first_name
 Optional. 30 characters or fewer.
 
