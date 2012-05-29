@@ -1,0 +1,6 @@
+# Compiled source #
+###################
+*.pyc
+*.swp
+*.tmp
+*.bk
