@@ -80,6 +80,8 @@ function mouseCoords(ev)
     {
       return {x:ev.pageX-document.body.scrollLeft,y:ev.pageY-document.body.scrollTop};
     }
+  else 
+    return {x:ev.clientX+document.body.scrollLeft-document.body.clientLeft,y:ev.clientY+document.body.scrollTop-document.body.clientTop};
 }
 
 var a=0,s,agreeNum,againstNum,max=14,nownum=1;
@@ -121,13 +123,5 @@ $(document).ready(function()
                                                                                                  $(".addCm").slideToggle();
                                                                                                  $(".commentTxt").slideToggle("slow");
                                                                                                })
-					$(".content").click(function()
-					{
-						$(".C_and_N").slideToggle("slow");
-					    $(".commentTxt").hide();
-					    $(".addCm").hide();
-					    document.getElementById("CNID").style.left=mousePos.x.toString(10)+"px";
-					    document.getElementById("CNID").style.top=mousePos.y.toString(10)+"px";
-						})
                                                                                              })
                                                                                         
