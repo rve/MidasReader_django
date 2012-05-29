@@ -45,13 +45,8 @@ function mouseDownEvent(x, y)
 {
   x -= _rc.x;
   y -= _rc.y - getScrollY();
-  if (_points.length > 0)
-    {
-      _g.clearRect(0, 0, _rc.width, _rc.height);
-    }
     _points.length = 1;
     _points[0] = new Point(x, y);
-    _g.fillRect(x - 4, y - 3, 9, 9);
     _isDown = true;
 }
 function mouseMoveEvent(x, y)
@@ -71,6 +66,7 @@ function mouseUpEvent(x, y)
       if (_points.length >= 10)
         {
           var result = _r.Recognize(_points, document.getElementById('useProtractor').checked);
+          alert(result.Name);
         }
         else // fewer than 10 points were inputted
           {

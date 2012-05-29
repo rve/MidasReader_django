@@ -20,7 +20,6 @@
         {% if text %} <div id="container"> 
           <div class="page" id="1" style="display: block;"> 
             <div class="content" id="contentId" onmousedown="mouseDownEvent(event.clientX, event.clientY)" onmousemove="mouseMoveEvent(event.clientX, event.clientY)" onmouseup="mouseUpEvent(event.clientX, event.clientY)" oncontextmenu="return false;">
-		<input type="radio" name="search" id="useProtractor" style="display:none">
                     {{text}}
                 </div>
                 <div id="buttonlist">
