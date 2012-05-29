@@ -64,8 +64,14 @@
                         <br/>
                         <canvas id="canvasId" width="435px" height="250px" style="display:none" >
                         Your browser doesn't support canvas.
-                        </canvas>
-                    </div>
+                      </canvas>
+                      </div>
+                      <div class="C_and_N" id="CNID" style="display:none">
+                        <input type="button" class="comment" value="Comment">
+                        <input type="button" class="addCm" value="Commit"/>
+                        <br />
+                        <textarea id="CommentId" rows="10" class="commentTxt" cols="30" style="display:none"></textarea>
+                      </div>
                     {% else %}
                     <div class="content">Please refresh.</div>
                     {% endif %}

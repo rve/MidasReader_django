@@ -1,10 +1,5 @@
 var maxpage;
 var pagestart;
-//***************************setfocus****************************//
-function setfocus(id)
-{
-    document.getElementById(id).focus();
-}
 //***************************SetPos*****************************//
 function SetPos(page)
 {
