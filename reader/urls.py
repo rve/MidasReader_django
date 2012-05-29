@@ -8,7 +8,6 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'reader.views.home', name='home'),
     url(r'^reader/$', 'read.views.index'),
-    url(r'^reader/(?P<page>\d+)/$', 'read.views.reader2'),
     url(r'^reader/(?P<book_id>\d+)/(?P<page>\d+)/$', 'read.views.reader'),
     url(r'^index/$','read.views.index'),
     url(r'^display_meta/$', 'read.views.display_meta'),
