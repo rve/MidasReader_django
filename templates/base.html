@@ -1,0 +1,17 @@
+{% load dajaxice_templatetags %}
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    {% dajaxice_js_import %}
+    <script type="text/javascript">
+      function my_js_callback(data) {
+        alert(data.message);
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="Dajaxice.read.myexample(my_js_callback)">Click me!</button>
+  </body>
+</html>

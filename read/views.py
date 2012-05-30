@@ -1,7 +1,7 @@
 #-*- coding: UTF-8 -*- 
 import codecs
 from django.shortcuts import render_to_response
-from django.template import Context, loader
+from django.template import Context, loader, RequestContext
 from read.models import Book
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import Http404
@@ -11,13 +11,14 @@ from django.views.generic.date_based import object_detail
 from django.contrib.auth.decorators import login_required
 @csrf_exempt
 def sign_in(request):
-    if(request.POST):
+    if request.method == 'POST' :
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username = username, password = password)
         if user is not None:
             if user.is_active:
                 login(request,user)
+                print "login success"
                 return HttpResponseRedirect('/index/')
             else:
                 return HttpResponse("disabled account")
@@ -27,13 +28,16 @@ def sign_in(request):
 
 @login_required
 def index(request):
-#test
-    print("whats the  fuck print")
     book_list = Book.objects.all()
 #load template
+    if request.user.is_authenticated():
+        print "authenticate"
+    else :
+        print "not authenticate"
     t = loader.get_template("index.html")
-    c = Context({
+    c = RequestContext(request, {
         'book_list': book_list,
+        'user': request.user,
         })
     return HttpResponse(t.render(c))
 def reader(request, book_id, page):
@@ -86,3 +90,5 @@ def search(request):
         message = 'You submitted an empty form.'
     return HttpResponse('<h1> %s </h1>' % message)
 
+def test(request):
+    return render_to_response('base.html')

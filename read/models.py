@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Book(models.Model):
     pub_date = models.DateTimeField('date published')
@@ -14,7 +15,12 @@ class tag(models.Model):
     
     def __unicode__(self):
         return self.tag_name
-class user(models.Model):
-    username = models.CharField(max_length=100)
-    def __unicode__(self):
-        return self.username
+
+class UserProfile(models.Model):
+    # This field is required.
+    user = models.OneToOneField(User)
+
+    current_book = models.ForeignKey(Book)
+    current_page = models.IntegerField()
+    def __unicode(self):
+        return self.current_page
