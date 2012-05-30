@@ -8,7 +8,11 @@
 <body>
   <header> <h1>Midas Reader</h1> </header>
   <nav>
-    <a href="../reader" >我的阅读器</a>
+    {% if user.is_authenticate %}
+    <p class="tips">{{user.username}} Level 6</p>
+    {% else %}
+    <a href="../login"> login</a>
+    {% endif %}
   </nav>
   {% if book_list %}
   <article> {% for book in book_list%}</article>

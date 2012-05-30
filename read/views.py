@@ -3,10 +3,32 @@ import codecs
 from django.shortcuts import render_to_response
 from django.template import Context, loader
 from read.models import Book
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.http import Http404
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import authenticate, login
+from django.views.generic.date_based import object_detail
+from django.contrib.auth.decorators import login_required
+@csrf_exempt
+def sign_in(request):
+    if(request.POST):
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username = username, password = password)
+        if user is not None:
+            if user.is_active:
+                login(request,user)
+                return HttpResponseRedirect('/index/')
+            else:
+                return HttpResponse("disabled account")
+    else:
+        return render_to_response("login.html")
 
+
+@login_required
 def index(request):
+#test
+    print("whats the  fuck print")
     book_list = Book.objects.all()
 #load template
     t = loader.get_template("index.html")
@@ -43,6 +65,7 @@ def reader(request, book_id, page):
         'text': text,
         'next_page' : next_page,
         'prev_page' : prev_page,
+        'page_num': page,
         'current_page':page,
         'book_id' : book_id,
         })

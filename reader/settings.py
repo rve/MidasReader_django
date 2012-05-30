@@ -1,4 +1,5 @@
 # Django settings for reader project.
+from django.core.urlresolvers import reverse_lazy
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -155,3 +156,5 @@ LOGGING = {
         },
     }
 }
+LOGIN_URL = reverse_lazy('sign_in')
+LOGIN_REDIRECT_URL = reverse_lazy('index')
