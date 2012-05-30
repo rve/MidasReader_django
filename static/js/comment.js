@@ -71,7 +71,6 @@ function addComment()
   var addstr=document.getElementById("commentId").value;
   if (addstr.length==0)
     {
-      alert("Can't commit nothing");
       return ;
     }
   commentArray.push(addstr);
