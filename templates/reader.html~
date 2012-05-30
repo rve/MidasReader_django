@@ -4,7 +4,9 @@
         <meta charset="UTF-8">
         <title>Midas Reader</title>
         <script type="text/javascript" src="/static/js/jquery.js"></script>
-        <script type="text/javascript"> var page_num = {{page_num}};</script>
+        <script type="text/javascript" src="/static/js/gesture.js"></script>
+        <script type="text/javascript" src="/static/js/dollar.js"></script>
+        <script type="text/javascript"> var page_num = {{prev_page}};</script>
         <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
         <script src="/static/js/notepad.js" type="text/javascript"></script>
         <link rel="stylesheet" href="/static/css/notepad.css" />
@@ -12,15 +14,17 @@
         <link rel="stylesheet" href="/static/css/comment.css" />
         <script type="text/javascript" src="/static/js/word_cloud.js"></script>
     </head>
-    <body onload="SetArray(100)" >
+    <body onload="SetArray(100);onLoadEvent()" >
         <br/>
         <header> <h1>Midas Reader</h1> </header>
-        {% if text %} <div id="container"> <div class="page" id="1" style="display: block;"> <div class="content">
+        {% if text %} <div id="container"> 
+          <div class="page" id="1" style="display: block;"> 
+            <div class="content" id="contentId" onmousedown="mouseDownEvent(event.clientX, event.clientY)" onmousemove="mouseMoveEvent(event.clientX, event.clientY)" onmouseup="mouseUpEvent(event.clientX, event.clientY)" oncontextmenu="return false;">
                     {{text}}
                 </div>
                 <div id="buttonlist">
                     <hr/><hr/>
-                    <div class="pagenum">Page:  {{page_num}}</div>
+                    <div class="pagenum">Page:  {{prev_page}}</div>
                     <div class="whole" id="wholeId" onmouseover="stop()" onmouseout="goon()">
                         <div id="scrollId" class="scroll">
                             <div class="scroll1">This is comment:1</div>

@@ -29,6 +29,7 @@ function SetPage()//initialize
 {
     var text_value = document.getElementById("txtid").value;
     window.localStorage.txtid = text_value;
+    console.log(window.localStorage.txtid);
     var newvalue=document.getElementById("txtid").value;
     for (var i=0;i<maxpage;i++)
     {
@@ -48,11 +49,12 @@ function SetArray(num)
 //**************************AddText***********************//
 function AddText(page,txt)//add sth to page xx
 {
+    var text_value = document.getElementById("txtid").value;
+    window.localStorage.txtid = text_value;      
+    console.log(window.localStorage.txtid);
     if (txt.length==0) return ;
     var pagenum=parseInt(page,10);
     var origin=document.getElementById("txtid").value;
-    if (origin[origin.length-1]!='\n')
-      origin+="\n";
     var nowstart=origin.length;
     for (var i=pagenum+1;i<maxpage;i++)
         if (pagestart[i]!=-1) 
@@ -81,8 +83,6 @@ function AddText(page,txt)//add sth to page xx
     document.getElementById("txtid").value=newtext;
     document.getElementById("txtid").focus();
     document.getElementById("txtid").setSelectionRange(pos,pos);
-    var text_value = document.getElementById("txtid").value;
-    window.localStorage.txtid = text_value;      
 }
 
 //**************************SelectAll**************************//
@@ -135,6 +135,7 @@ $(document).ready(function()
                 {
                     var text_value = document.getElementById("txtid").value;
                     window.localStorage.txtid = text_value;
+                    console.log(window.localStorage.txtid);
                 })
             
         })

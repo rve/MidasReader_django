@@ -68,13 +68,7 @@ function getRandom(n)
 function addComment()
 {
   var cm=document.getElementById("scrollId");
-  var addstr=document.getElementById("commentId").value;
-  if (addstr.length==0)
-    {
-      alert("Can't commit nothing");
-      return ;
-    }
-  commentArray.push(addstr);
+  commentArray.push(document.getElementById("commentId").value);
   agreeNum.push(0);
   againstNum.push(0);
   cm.innerHTML+=commentArray[commentArray.length-1]+"<br/>";
@@ -116,36 +110,26 @@ $(document).ready(function()
                                           againstNum[nownum]++;
                                           $(".against").val("Against("+againstNum[nownum].toString(10)+")");
                                         });
-                    
+                    $(".addCm").click(function()
+                                      {
+                                        addComment();
+                                        $.unblockUI;
+                                      })
                     $(".comment").click(function()
                                         {
                                           $.blockUI({
                                             message: $(".commentBlock"),
                                             css:
                                               {
-                                              top:"50%",
+                                              top:"0",
                                               left:"50%",
-                                              background:"#D9DEF0",
                                             }
                                           })
-                                          $(".addCm").click($.unblockUI)
-                                          $(".addCm").click(function()
-                                                            {
-                                                              addComment();
-                                                            })
                                           $(".exitComment").click($.unblockUI);
                                           $(".commentText").click(function()
                                                                   {
                                                                     document.getElementById("commentId").focus();
                                                                   })
                                         })
-                    $("#txtid").click(function()
-                                      {
-                                        document.getElementById("txtid").focus();
-                                      })
-                    $("#addId").click(function()
-                                      {
-                                        document.getElementById("addId").focus();
-                                      })
                   })
                                                                                         
