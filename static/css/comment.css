@@ -36,3 +36,11 @@ input.against
 {
   position:fixed;
 }
+
+.nearby_comment
+{
+  background:#F4F6F3;
+  position:fixed;
+  top:30%;
+  width:200px;
+}

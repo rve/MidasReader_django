@@ -31,7 +31,7 @@ position: absolute;
 left:15%;
 }
 body {
-background:#D9DEF0;
+background:-webkit-linear-gradient(left,rgb(237,236,235),rgb(209,208,208));
 }
 .buttonList
 {
@@ -58,4 +58,19 @@ background:#D9DEF0;
   position:fixed;
   left:95%;
   top:30%;
+}
+
+#comment_close
+{
+  position:fixed;
+  left:13%;
+  top:20%;
+}
+
+#comment_open
+{
+  z-index:4;
+  position:fixed;
+  left:13%;
+  top:20%;
 }

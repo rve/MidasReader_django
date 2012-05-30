@@ -22,7 +22,7 @@ function goon()
 {
   timer=setInterval(scrollstart,100);
   s.scrollTop=lastScrollTop;
-  document.getElementById("wholeId").style.backgroundColor="#D9DEF0";
+  document.getElementById("wholeId").style.backgroundColor="#F4F6F3";
 }
 
 function scrollstart()
@@ -94,7 +94,7 @@ $(document).ready(function()
                                          {
                                            s.scrollTop=lastScrollTop;
                                            $(".flip").val("Hide comments");
-                                           document.getElementById("wholeId").style.backgroundColor="#D9DEF0";
+                                           document.getElementById("wholeId").style.backgroundColor="#F4F6F3";
                                            timer=setInterval(scrollstart,100);
                                          }
                                          else

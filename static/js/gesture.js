@@ -1,10 +1,9 @@
-var _isDown, _points, _r, _g, _rc;
+var _isDown, _points, _g, _rc;
 function onLoadEvent()
 {
   document.onselectstart = function() { return false; }
   document.onmousedown = function() { return false; }
   _points = new Array();
-  _r = new DollarRecognizer();
 
   var canvas = document.getElementById('contentId');
   _rc = getCanvasRect(canvas); // canvas rect on page
@@ -81,8 +80,9 @@ function mouseUpEvent(x, y)
       _isDown = false;
       if (_points.length >= 10)
         {
-          var result = _r.Recognize(_points, document.getElementById('useProtractor').checked);
-          if (result.Name=="Line" && 
+          var result=judge_gesture();
+          console.log(result);
+          if (result=="Line" && 
               distance(_points[0],_points[_points.length-1])>150)
             {
               if (_points[0].x<_points[_points.length-1].x)
@@ -91,13 +91,11 @@ function mouseUpEvent(x, y)
                 }
               else document.getElementById("prev_page").click();
             }
-          if (result.Name=="Circle") alert("Circle");
-          if (result.Name=="X") alert("X");
         }
         else // fewer than 10 points were inputted
           {
             LastMousePos=mousePos;
-            $("#CNID").slideToggle("slow");
+            $(".C_and_N").slideToggle("slow");
             document.getElementById("CNID").style.left=mousePos.x.toString(10)+"px";
             document.getElementById("CNID").style.top=mousePos.y.toString(10)+"px";
           }
@@ -107,4 +105,26 @@ function round(n, d) // round 'n' to 'd' decimals
 {
   d = Math.pow(10, d);
   return Math.round(n * d) / d
+}
+
+function judge_gesture()
+{
+  var maxDx=0,maxDy=0,n=_points.length;
+  for (var i=1;i<n;i++)
+  {
+    if (Math.abs(_points[i].x-_points[i-1].x)>maxDx) maxDx=Math.abs(_points[i].x-_points[i-1].x);
+    if (Math.abs(_points[i].y-_points[i-1].y)>maxDy) maxDy=Math.abs(_points[i].y-_points[i-1].y);
+  }
+  if (maxDy<20) return "Line";
+  if (maxDy<20) return "Col";
+  if (_points[n-1].x>_points[0].x)
+    {
+      if (_points[n-1].y>_points[0].y) return "LU_RD";
+      else return "LD_RU";
+    }
+  else
+    {
+      if (_points[n-1].y>_points[0].y) return "RU_LD";
+      else return "RD_LU";
+    }
 }
