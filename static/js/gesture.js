@@ -89,9 +89,9 @@ function mouseUpEvent(x, y)
             {
               if (_points[0].x<_points[_points.length-1].x)
                 {
-                  window.location.href="/reader/{{book_id}}/{{next_page}}";
+                  document.getElementById("next_page").click();
                 }
-              else window.location.href="/reader/{{book_id}}/{{prev_page}}";
+              else document.getElementById("prev_page").click();
             }
         }
         else // fewer than 10 points were inputted
