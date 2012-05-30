@@ -1,0 +1,8 @@
+# Compiled source #
+###################
+read/*.pyc
+reader/*.pyc
+static/js/*.js~
+*.swp
+*.tmp
+*.bk

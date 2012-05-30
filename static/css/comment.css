@@ -1,0 +1,38 @@
+div.scroll
+{
+	overflow:hidden;
+	width:100%;
+	line-height:20px;
+	height:20px;
+	font-size:20px;
+	text-align:center;
+	display:none;
+}
+input.flip
+{
+	left:90%;
+	top:200px;
+}
+div.whole
+{
+	top:0px;
+	left:0px;
+	width:100%;
+	text-align:center;
+	position:fixed;
+}
+
+input.agree
+{
+	display:none;
+}
+
+input.against
+{
+	display:none;
+}
+
+.C_and_N
+{
+  position:fixed;
+}
