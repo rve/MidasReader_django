@@ -90,3 +90,5 @@ def search(request):
         message = 'You submitted an empty form.'
     return HttpResponse('<h1> %s </h1>' % message)
 
+def test(request):
+    return render_to_response('base.html')

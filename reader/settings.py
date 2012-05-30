@@ -73,7 +73,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 "django.core.context_processors.media",
 "django.core.context_processors.static",
 "django.core.context_processors.tz",
-"django.contrib.messages.context_processors.messages"
+"django.core.context_processors.request",
+"django.contrib.messages.context_processors.messages",
 )
 
 # Additional locations of static files
@@ -99,7 +100,7 @@ SECRET_KEY = '0y(_ie()j#zx=ca_*+0&amp;f=0gd(wdl1w*1p^mdh@n@)em*kw#=2'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -134,6 +135,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'read',
+    'dajaxice',
     #'bookreader',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
@@ -171,3 +173,4 @@ LOGIN_REDIRECT_URL = reverse_lazy('index')
 
 AUTH_PROFILE_MODULE = 'read.UserProfile'
 
+DAJAXICE_MEDIA_PREFIX = 'dajaxice'
