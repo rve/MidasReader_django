@@ -65,6 +65,17 @@ STATIC_ROOT = '/home/media/reader/static/'
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+"django.contrib.auth.context_processors.auth",
+"django.core.context_processors.debug",
+"django.core.context_processors.i18n",
+"django.core.context_processors.media",
+"django.core.context_processors.static",
+"django.core.context_processors.tz",
+"django.contrib.messages.context_processors.messages"
+)
+
 # Additional locations of static files
 STATICFILES_DIRS = (
         'static',
@@ -145,12 +156,10 @@ LOGGING = {
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
+            'class': 'django.utils.log.AdminEmailHandler',
         }
     },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
+    'loggers': { 'django.request': { 'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': True,
         },
@@ -158,3 +167,7 @@ LOGGING = {
 }
 LOGIN_URL = reverse_lazy('sign_in')
 LOGIN_REDIRECT_URL = reverse_lazy('index')
+
+
+AUTH_PROFILE_MODULE = 'read.UserProfile'
+
