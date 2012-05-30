@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.core.urlresolvers import reverse_lazy
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -9,7 +10,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'reader.views.home', name='home'),
     url(r'^reader/$', 'read.views.index'),
     url(r'^reader/(?P<book_id>\d+)/(?P<page>\d+)/$', 'read.views.reader'),
-    url(r'^index/$','read.views.index'),
+    url(r'^index/$','read.views.index', name = 'index'),
     url(r'^login/$','read.views.sign_in',name='sign_in'),
     url(r'^display_meta/$', 'read.views.display_meta'),
     url(r'^search-form/$', 'read.views.search_form'),
