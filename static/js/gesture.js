@@ -41,16 +41,29 @@ function getScrollY()
 //
 // Mouse Events
 //
+var mousePos;
+
 function mouseDownEvent(x, y)
 {
   x -= _rc.x;
   y -= _rc.y - getScrollY();
-    _points.length = 1;
-    _points[0] = new Point(x, y);
-    _isDown = true;
+  _points.length = 1;
+  _points[0] = new Point(x, y);
+  _isDown = true;
 }
+
+function distance(a,b)
+{
+  return Math.sqrt((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));
+}
+
 function mouseMoveEvent(x, y)
 {
+  mousePos={x:x,y:y};
+  if (distance(mousePos,LastMousePos)>50 && (!$(".C_and_N").is("hidden")))
+    {
+      $(".C_and_N").hide();
+    }
   if (_isDown)
     {
       x -= _rc.x;
@@ -58,6 +71,9 @@ function mouseMoveEvent(x, y)
       _points[_points.length] = new Point(x, y); // append
     }
 }
+
+var LastMousePos={x:0,y:0};
+
 function mouseUpEvent(x, y)
 {
   if (_isDown)
@@ -66,10 +82,13 @@ function mouseUpEvent(x, y)
       if (_points.length >= 10)
         {
           var result = _r.Recognize(_points, document.getElementById('useProtractor').checked);
-          alert(result.Name);
         }
         else // fewer than 10 points were inputted
           {
+            LastMousePos=mousePos;
+            $("#CNID").slideToggle("slow");
+            document.getElementById("CNID").style.left=mousePos.x.toString(10)+"px";
+            document.getElementById("CNID").style.top=mousePos.y.toString(10)+"px";
           }
     }
 }

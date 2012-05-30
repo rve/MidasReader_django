@@ -1,14 +1,14 @@
+var commentArray;
+
 function init2()
 {
   s=document.getElementById("scrollId");
-  agreeNum=new Array(max+1);
-  againstNum=new Array(max+1);
+  agreeNum=new Array();
+  againstNum=new Array();
+  commentArray=new Array();
+  nownum=0;
   lastScrollTop=0;
-  for (var i=1;i<=max;i++)
-  {
-    agreeNum[i]=0;
-    againstNum[i]=0;
-  }
+  $("#scrollId").val();
 }
 
 var timer=0,timer2=1,sn=20,lastScrollTop=0;
@@ -27,7 +27,7 @@ function goon()
 
 function scrollstart()
 {
-  if (s.scrollTop>=20*(max-1))
+  if (s.scrollTop>=20*(commentArray.length-1))
     {
       if (sn<40)
         {
@@ -35,7 +35,7 @@ function scrollstart()
           return ;
         }
         s.scrollTop=0;
-        nownum=1;
+        nownum=0;
         sn=20;
         clearInterval(timer2);
         $(".agree").val("Agree("+agreeNum[nownum].toString(10)+")");
@@ -65,24 +65,24 @@ function getRandom(n)
   return Math.floor(Math.random()*n+1);
 }
 
-var mousePos;
-document.onmousemove=mouseMove;
-
-function mouseMove(ev) 
-{ 
-  ev= ev || window.event; 
-  mousePos = mouseCoords(ev); 
-}
-
-function mouseCoords(ev)
+function addComment()
 {
-  if (ev.pageX || ev.pageY)
+  var cm=document.getElementById("scrollId");
+  var addstr=document.getElementById("commentId").value;
+  if (addstr.length==0)
     {
-      return {x:ev.pageX-document.body.scrollLeft,y:ev.pageY-document.body.scrollTop};
+      alert("Can't commit nothing");
+      return ;
     }
+  commentArray.push(addstr);
+  agreeNum.push(0);
+  againstNum.push(0);
+  cm.innerHTML+=commentArray[commentArray.length-1]+"<br/>";
+  document.getElementById("commentId").value="";
 }
 
-var a=0,s,agreeNum,againstNum,max=14,nownum=1;
+
+var a=0,s,agreeNum,againstNum,nownum;
 $(document).ready(function()
                   {
                     init2();
@@ -106,28 +106,46 @@ $(document).ready(function()
                                            }
                                            a=(a+1) % 2;
                                      });
-                                     $(".agree").click(function()
-                                                       {
-                                                         agreeNum[nownum]++;
-                                                         $(".agree").val("Agree("+agreeNum[nownum].toString(10)+")");
-                                                       });
-                                                       $(".against").click(function()
-                                                                           {
-                                                                             againstNum[nownum]++;
-                                                                             $(".against").val("Against("+againstNum[nownum].toString(10)+")");
-                                                                           });
-                                                                           $(".comment").click(function()
-                                                                                               {
-                                                                                                 $(".addCm").slideToggle();
-                                                                                                 $(".commentTxt").slideToggle("slow");
-                                                                                               })
-					$(".content").click(function()
-					{
-						$(".C_and_N").slideToggle("slow");
-					    $(".commentTxt").hide();
-					    $(".addCm").hide();
-					    document.getElementById("CNID").style.left=mousePos.x.toString(10)+"px";
-					    document.getElementById("CNID").style.top=mousePos.y.toString(10)+"px";
-						})
-                                                                                             })
+                    $(".agree").click(function()
+                                      {
+                                        agreeNum[nownum]++;
+                                        $(".agree").val("Agree("+agreeNum[nownum].toString(10)+")");
+                                      });
+                    $(".against").click(function()
+                                        {
+                                          againstNum[nownum]++;
+                                          $(".against").val("Against("+againstNum[nownum].toString(10)+")");
+                                        });
+                    
+                    $(".comment").click(function()
+                                        {
+                                          $.blockUI({
+                                            message: $(".commentBlock"),
+                                            css:
+                                              {
+                                              top:"50%",
+                                              left:"50%",
+                                              background:"#D9DEF0",
+                                            }
+                                          })
+                                          $(".addCm").click($.unblockUI)
+                                          $(".addCm").click(function()
+                                                            {
+                                                              addComment();
+                                                            })
+                                          $(".exitComment").click($.unblockUI);
+                                          $(".commentText").click(function()
+                                                                  {
+                                                                    document.getElementById("commentId").focus();
+                                                                  })
+                                        })
+                    $("#txtid").click(function()
+                                      {
+                                        document.getElementById("txtid").focus();
+                                      })
+                    $("#addId").click(function()
+                                      {
+                                        document.getElementById("addId").focus();
+                                      })
+                  })
                                                                                         
