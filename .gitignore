@@ -6,3 +6,5 @@ static/js/*.js~
 *.swp
 *.tmp
 *.bk
+*.html~
+templates/*.html~
