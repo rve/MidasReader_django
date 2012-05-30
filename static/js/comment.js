@@ -8,7 +8,7 @@ function init2()
   commentArray=new Array();
   nownum=0;
   lastScrollTop=0;
-  $("#scrollId").val();
+  $("#scrollId").val("");
 }
 
 var timer=0,timer2=1,sn=20,lastScrollTop=0;
@@ -27,6 +27,7 @@ function goon()
 
 function scrollstart()
 {
+  if (commentArray.length==0) return;
   if (s.scrollTop>=20*(commentArray.length-1))
     {
       if (sn<40)
@@ -84,27 +85,6 @@ function addComment()
 var a=0,s,agreeNum,againstNum,nownum;
 $(document).ready(function()
                   {
-                    init2();
-                    $(".flip").click(function()
-                                     {
-                                       $(".scroll").slideToggle("slow");
-                                       $(".agree").slideToggle("slow");
-                                       $(".against").slideToggle("slow");
-                                       if (a==0)
-                                         {
-                                           s.scrollTop=lastScrollTop;
-                                           $(".flip").val("Hide comments");
-                                           document.getElementById("wholeId").style.backgroundColor="#F4F6F3";
-                                           timer=setInterval(scrollstart,100);
-                                         }
-                                         else
-                                           {
-                                             lastScrollTop=s.scrollTop;
-                                             $(".flip").val("Show comments");
-                                             clearInterval(timer);
-                                           }
-                                           a=(a+1) % 2;
-                                     });
                     $(".agree").click(function()
                                       {
                                         agreeNum[nownum]++;

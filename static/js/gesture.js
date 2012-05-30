@@ -115,8 +115,8 @@ function judge_gesture()
     if (Math.abs(_points[i].x-_points[i-1].x)>maxDx) maxDx=Math.abs(_points[i].x-_points[i-1].x);
     if (Math.abs(_points[i].y-_points[i-1].y)>maxDy) maxDy=Math.abs(_points[i].y-_points[i-1].y);
   }
-  if (maxDy<20) return "Line";
-  if (maxDy<20) return "Col";
+  if (maxDy<10) return "Line";
+  if (maxDy<10) return "Col";
   if (_points[n-1].x>_points[0].x)
     {
       if (_points[n-1].y>_points[0].y) return "LU_RD";
