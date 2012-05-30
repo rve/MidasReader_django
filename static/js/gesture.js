@@ -82,6 +82,17 @@ function mouseUpEvent(x, y)
       if (_points.length >= 10)
         {
           var result = _r.Recognize(_points, document.getElementById('useProtractor').checked);
+
+//          alert(distance(_points[0],_points[_points.length-1]));
+          if (result.Name=="Line" && 
+              distance(_points[0],_points[_points.length-1])>150)
+            {
+              if (_points[0].x<_points[_points.length-1].x)
+                {
+                  window.location.href="/reader/{{book_id}}/{{next_page}}";
+                }
+              else window.location.href="/reader/{{book_id}}/{{prev_page}}";
+            }
         }
         else // fewer than 10 points were inputted
           {
