@@ -5,8 +5,27 @@ from django.template import Context, loader
 from read.models import Book
 from django.http import HttpResponse
 from django.http import Http404
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import authenticate, login
+@csrf_exempt
+def sign_in(request):
+    if(request.POST):
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username = username, password = password)
+        if user is not None:
+            if user.is_active:
+                login(request,user)
+                return HttpResponse("login sucess")
+            else:
+                return HttpResponse("disabled account")
+    else:
+        return render_to_response("login.html")
+
 
 def index(request):
+#test
+    print("whats the  fuck print")
     book_list = Book.objects.all()
 #load template
     t = loader.get_template("index.html")
