@@ -1,122 +1,73 @@
 body
 {
-background:-webkit-gradient(linear, 0 0, 2000 bottom, from(#FFFFFF), to(#E8E7E8));
+  background:-webkit-gradient(linear, 0 0,right bottom, from(#FFFFFF), to(#E8E7E8));
 }
 
-.activity
+.left_part
 {
-  position:absolute;
-  left:200px;
-  top:50px;
+  float:left;
+  margin-top:50px;
+  margin-left:50px;
 }
 
-.separation
+.act1
 {
-  position:absolute;
-  left:200px;
-  top:350px;
+  margin-left:10px;
 }
 
-.logo
+.act2
 {
-  position:absolute;
-  left:900px;
-  top:50px;
+  margin-left:30px;
 }
 
-.login
+.act_logo1
 {
-  position:absolute;
-  left:900px;
-  top:150px;
-}
-
-.book_list
-{
-  position:absolute;
-  left:200px;
-  top:400px;
-}
-
-.forget_pas
-{
-  position:absolute;
-  left:180px;
-  top:50px;
-}
-
-.regist
-{
-  position:absolute;
-  left:96px;
-  top:70px;
-}
-
-.search
-{
-  position:absolute;
-  left:900px;
-  top:350px;
-}
-
-.search_button
-{
-  position:absolute;
-  top:0px;
-  left:180px;
-}
-
-.input
-{
-  height:30px;
-  width:180px;
-  border:0px;
-  font-size:22px;
-}
-
-.username
-{
-  position:absolute;
-}
-
-.password
-{
-  position:absolute;
-  top:35px;
-}
-
-.submit
-{
-  position:absolute;
-  top:70px;
-}
-
-.act_logo
-{
-  position:absolute;
-  top:210px;
-  left:20px;
+  margin-left:35px;
 }
 
 .act_logo2
 {
-  position:absolute;
-  top:210px;
-  left:330px;
+  margin-left:85px;
 }
 
-.tag1
+.separation
 {
-  position:absolute;
-  top:30px;
-  left:300px;
-  z-index:1;
+  margin-top:10px;
+  margin-left:25px;
 }
 
-.tag2
+.book_list
 {
-  position:absolute;
-  top:30px;
-  left:650px;
-  z-index:1;
+  margin-top:30px;
+  margin-left:30px;
+}
+
+.right_part
+{
+  float:right;
+  margin-top:50px;
+  margin-right:50px;
+}
+
+.user
+{
+  margin-top:50px;
+}
+
+.search
+{
+  margin-top:30px;
+}
+
+.input
+{
+  border:0px;
+  font-size:22px;
+  width:180px;
+}
+
+.search_button
+{
+  position:relative;
+  top:10px;
 }

@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title></title>
+    <title></title>
+    <link rel="stylesheet" href="/static/css/login.css" />
 </head>
 <body>
-  <form method="post" name="post">
-    <label for="username" autofocus autocomplete="on"> Username: </label>
-    <input type="text" id="username" name="username" />
-    <br/>
-    <label for="password"> Password:  </label>
-    <input type="password" id="password" name="password" />
-    <br/>
-    <input type="submit" value="Submit" />
-<img src="/static/pic/index/login.png" onclick="document.post.submit()"/>
+    <img src="/static/pic/logo.png" class="logo"/>
+  <form method="post" name="post"  class="login">
+          <input type="text" id="username" name="username" value="User name" class="input username"/>
+          <br/>
+          <input type="password" id="password" name="password" class="input password"/>
+          <br/>
+          <img src="/static/pic/index/login.png" onclick="document.post.submit()" class="submit"/>
+        </form>
+        <img src="/static/pic/index/regist.png" onclick="alert('Regist page')"class="regist"/>
+        <img src="/static/pic/index/forget.png" onclick="alert('Forget password')" class="forget_pas"/>
   </form>
 </body>
 </html>
