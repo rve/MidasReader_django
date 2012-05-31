@@ -12,10 +12,46 @@
     <script type="text/javascript"> var page_num = {{page_num}};</script>
     <script type="text/javascript" src="/static/js/notepad.js"></script>
     <script type="text/javascript" src="/static/js/word_cloud.js"></script>
-    <link rel="stylesheet" type="text/css" href="/static/css/tipTip.css" />
-    <link rel="stylesheet" href="/static/css/reader.css" />
+    <script src="/static/js/jq_fix_csrf.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var server_page_num = page_num;
+      function post_it(){
+        console.log(page_num);
+        $.post("/print/", {
+current_page:page_num+1
+},
+function(data) {
+console.log(page_num)
+//location.href="/reader/{{book_id}}/"+page_num.toString(10);
+});
+}
+function get_it() {
+  $.get("/print", function(data){
+      //alert(data);
+      server_page_num= data;
+      console.log("server_page_num "+server_page_num);
+      });
+}
+function startTimer(){
+  get_it();
+  if ( server_page_num != undefined && server_page_num == page_num)
+  {
+    setTimeout("startTimer()", 1000);
+    console.log("cmp: "+page_num);
+  }
+  else
+  {
+    location.href="/reader/{{book_id}}/"+server_page_num;
+    console.log("jump to "+ server_page_num);
+  }
+}
+
+</script>
+<link rel="stylesheet" type="text/css" href="/static/css/tipTip.css" />
+<link rel="stylesheet" href="/static/css/reader.css" />
   </head>
-  <body onload="SetArray(100);onLoadEvent();init2()" >
+  <body onload="SetArray(100);onLoadEvent();init2();startTimer();" >
 
     <!--rolling comments-->
     <div class="whole" id="wholeId" onmouseover="stop()" onmouseout="goon()">
@@ -75,7 +111,7 @@
     <!--page_button part-->
     <div class="page_button">
       <div>
-        <a href="/reader/{{book_id}}/{{next_page}}" id="next_page"><img src="/static/pic/next_page.png" /></a>
+        <a href="/reader/{{book_id}}/{{next_page}}" id="next_page" onclick="post_it()"><img src="/static/pic/next_page.png" /></a>
       </div>
       <div>
         <a href="/reader/{{book_id}}/{{prev_page}}" id="prev_page"><img src="/static/pic/prev_page.png" class="prev_page" /></a>

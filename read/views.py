@@ -96,7 +96,7 @@ def print_it(request):
     if request.is_ajax():
         if request.method == 'POST':
             #print  request.POST
-            page_num = request.POST['page_num']
+            page_num = request.POST['current_page']
             try:
                 page_num_instance = UserProfile.objects.get(pk=1)
                 page_num_instance.current_page = page_num
