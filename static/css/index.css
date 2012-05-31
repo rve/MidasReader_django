@@ -1,6 +1,7 @@
 body
 {
   background:-webkit-gradient(linear, 0 0,right bottom, from(#FFFFFF), to(#E8E7E8));
+  overflow:visible;
 }
 
 .left_part
@@ -8,15 +9,19 @@ body
   float:left;
   margin-top:50px;
   margin-left:50px;
+  display:inline;
 }
 
 .act1
 {
+  display:inline;
   margin-left:10px;
 }
 
 .act2
 {
+  margin:auto;
+  display:inline;
   margin-left:30px;
 }
 
@@ -44,9 +49,10 @@ body
 
 .right_part
 {
-  float:right;
+  float:left;
   margin-top:50px;
-  margin-right:50px;
+  margin-left:60px;
+  display:inline;
 }
 
 .user

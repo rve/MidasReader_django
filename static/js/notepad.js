@@ -116,7 +116,6 @@ function kmp(str,pat)//find pat in str,return position
     return j==pat.length?(i-pat.length):-1;
 }
 
-var comment_flag=0;
 $(document).ready(function()
         {
             if (window.localStorage.txtid)
@@ -126,10 +125,18 @@ $(document).ready(function()
 
             $(".note").click(function()
                 {
-                    $("#noteId").slideToggle("slow");
-                    if (comment_flag==0) $("#T_N").val("Close Note");
-                    else $("#T_N").val("Take Note");
-                    comment_flag=(comment_flag+1)%2;
+                  $.blockUI({
+                    message: $("#noteId"),
+                    css:
+                      {
+                      top:"50%",
+                      left:"50%",
+                      width:"600px",
+                      background:"#E4E4E4",
+                    }
+                  });
+                  $(".blockOverlay").attr("title","Click to close").click($.unblockUI);
+                  $(".close_note").click($.unblockUI);
                 })
             $(".save").click(function()
                 {

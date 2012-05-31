@@ -1,8 +1,6 @@
 var _isDown, _points, _g, _rc;
 function onLoadEvent()
 {
-  document.onselectstart = function() { return false; }
-  document.onmousedown = function() { return false; }
   _points = new Array();
 
   var canvas = document.getElementById('contentId');
@@ -56,19 +54,27 @@ function distance(a,b)
   return Math.sqrt((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));
 }
 
-function mouseMoveEvent(x, y)
+function mousePosition(ev,x,y)
 {
-  mousePos={x:x,y:y};
-  if (distance(mousePos,LastMousePos)>50 && (!$(".C_and_N").is("hidden")))
-    {
-      $(".C_and_N").hide();
-    }
-  if (_isDown)
-    {
-      x -= _rc.x;
-      y -= _rc.y - getScrollY();
-      _points[_points.length] = new Point(x, y); // append
-    }
+  if(ev.pageX || ev.pageY){
+    mousePos={x:ev.pageX, y:ev.pageY};
+  }
+  else
+    mousePos={
+      x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+      y:ev.clientY + document.body.scrollTop  - document.body.clientTop
+    };
+
+    if (distance(mousePos,LastMousePos)>50 && (!$(".C_and_N").is("hidden")))
+      {
+        $(".C_and_N").hide();
+      }
+      if (_isDown)
+        {
+          x -= _rc.x;
+          y -= _rc.y - getScrollY();
+          _points[_points.length] = new Point(x, y); // append
+        }
 }
 
 var LastMousePos={x:0,y:0};
@@ -88,13 +94,14 @@ function mouseUpEvent(x, y)
                 {
                   document.getElementById("next_page").click();
                 }
-              else document.getElementById("prev_page").click();
+                else document.getElementById("prev_page").click();
             }
         }
         else // fewer than 10 points were inputted
           {
             LastMousePos=mousePos;
             $(".C_and_N").slideToggle("slow");
+            console.log(mousePos.x);
             document.getElementById("CNID").style.left=mousePos.x.toString(10)+"px";
             document.getElementById("CNID").style.top=mousePos.y.toString(10)+"px";
           }
@@ -121,9 +128,9 @@ function judge_gesture()
       if (_points[n-1].y>_points[0].y) return "LU_RD";
       else return "LD_RU";
     }
-  else
-    {
-      if (_points[n-1].y>_points[0].y) return "RU_LD";
-      else return "RD_LU";
-    }
+    else
+      {
+        if (_points[n-1].y>_points[0].y) return "RU_LD";
+        else return "RD_LU";
+      }
 }
