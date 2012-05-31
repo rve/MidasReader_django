@@ -52,3 +52,10 @@ div.whole
   width:195px;
   left:1%;
 }
+
+.note
+{
+  position:fixed;
+  left:850px;
+  z-index:1;
+}

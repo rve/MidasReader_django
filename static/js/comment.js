@@ -102,12 +102,12 @@ $(document).ready(function()
                                             message: $(".commentBlock"),
                                             css:
                                               {
-                                              top:"50%",
-                                              left:"50%",
-                                              background:"#D9DEF0",
+                                              position:"absolute",
+                                              background:"#EDECEB",
                                             }
-                                          })
-                                          $(".addCm").click($.unblockUI)
+                                          });
+                                          $(".addCm").click($.unblockUI);
+                                          $(".blockOverlay").attr("title","Close").click($.unblockUI);
                                           $(".addCm").click(function()
                                                             {
                                                               addComment();

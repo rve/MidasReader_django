@@ -81,9 +81,8 @@ function mouseUpEvent(x, y)
       if (_points.length >= 10)
         {
           var result=judge_gesture();
-          console.log(result);
           if (result=="Line" && 
-              distance(_points[0],_points[_points.length-1])>150)
+              distance(_points[0],_points[_points.length-1])>100)
             {
               if (_points[0].x<_points[_points.length-1].x)
                 {

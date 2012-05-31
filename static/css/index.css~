@@ -1,8 +1,32 @@
 body
 {
-  background:webkit-linear-gradient(left,rgb(255,255,255),rgb(229,229,229));
+background:-webkit-gradient(linear, 0 0, 2000 bottom, from(#FFFFFF), to(#E8E7E8));
 }
 
-body {
-background:-webkit-linear-gradient(left,rgb(237,236,235),rgb(209,208,208));
+.activity
+{
+  position:absolute;
+  left:200px;
+  top:50px;
+}
+
+.separation
+{
+  position:absolute;
+  left:200px;
+  top:350px;
+}
+
+.login
+{
+  position:absolute;
+  left:900px;
+  top:50px;
+}
+
+.book_list
+{
+  position:absolute;
+  left:200px;
+  top:400px;
 }

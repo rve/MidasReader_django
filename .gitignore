@@ -1,11 +1,15 @@
 # Compiled source #
 ###################
 read/*.pyc
+read/*.py~
 reader/*.pyc
+reader/*.py~
 static/js/*.js~
 *.swp
 *.tmp
 *.bk
 *.html~
+*.py~
+
 templates/*.html~
 example/*

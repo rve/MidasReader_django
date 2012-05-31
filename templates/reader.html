@@ -28,13 +28,12 @@
     <img src="/static/pic/logo.png" alt="" class="logo tipTip" title="MidaReader"/>
     <img src="/static/pic/comment_close.png" id="comment_close" onclick="comment_show()" class="tipTip" title="Show hotest comment"/>
     <img src="/static/pic/comment_close.png" onclick="comment_show_up()" class="comment_show_up tipTip" title="Rolling comments"/>
-    <img src="/static/pic/comment_open.png" id="comment_open" style="display:none" onclick="comment_hide()" class="tipTop" title="Hide hotest comment"/>
+    <img src="/static/pic/comment_open.png" id="comment_open" style="display:none" onclick="comment_hide()" class="tipTip" title="Hide hotest comment"/>
     <br />
     <br />
     <!--buttonList part-->
+    <img src="/static/pic/pen.png" class="note tipTip" title="Take note"/>
     <div class="buttonList">
-      <input type="button"  value="Take Note" id="T_N"/>
-      <br/>
       <div id="noteId" style="display:none"/>
         <input onclick="Selectall()" type="button" value="SelectAll"/>
         Add Note:
@@ -60,7 +59,7 @@
     </div>
 
     <div class="commentBlock" style="display:none">
-      <input type="button" class="addCm" value="Commit"/>
+      <input type="button" class="addCm" value="Submit"/>
       <input type="button" class="exitComment" value="Close"/>
       <br />
       <textarea id="commentId" rows="4" class="commentText" cols="30"></textarea>
@@ -72,15 +71,15 @@
 
     <!--Show text part-->
     {% if text %} 
-    <div id="container">
+    <div id="container" onmousedown="mouseDownEvent(event.clientX, event.clientY)" onmousemove="mouseMoveEvent(event.clientX, event.clientY)" onmouseup="mouseUpEvent(event.clientX, event.clientY)" oncontextmenu="return false;">
       <div class="page" id="1" style="display: block;"> 
       <img src="/static/pic/title_line.png" class="title_line"/>
-        <div class="content" id="contentId" onmousedown="mouseDownEvent(event.clientX, event.clientY)" onmousemove="mouseMoveEvent(event.clientX, event.clientY)" onmouseup="mouseUpEvent(event.clientX, event.clientY)" oncontextmenu="return false;">
+        <div class="content" id="contentId" >
           {{text}}
         </div>
         <hr/><hr/>
         <div id="CNID" class="C_and_N" style="display:none">
-          <input type="button" class="comment" value="Comment">
+          <img src="/static/pic/comment.png" class="comment tipTip" title="Comment"/>
         </div>
         <div class="pagenum">Page:  {{page_num}}</div>     
         {% else %}

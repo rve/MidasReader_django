@@ -3,84 +3,58 @@
   <head>
     <meta charset="UTF-8">
     <title>Midas Reader</title>
-<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="/static/css/index.css" />
   </head>
   <body>
-    <header> <h1>Midas Reader</h1> </header>
 
     <!--Activity part-->
+      <img src="/static/pic/index/book_tag1.png" class="tag1" />
+      <img src="/static/pic/index/book_tag2.png" class="tag2" />
     <div class="activity">
-      <a href="/templates/act1.html"><img src="/static/pic/index/activity1.png" width="200" height="200"/></a>
-      <a href="/templates/act2.html"><img src="/static/pic/index/activity2.png" width="200" height="200"></a>
+      <a href="/templates/act1.html"><img src="/static/pic/index/activity1.png" width="300" height="200"/></a>
+      <a href="/templates/act2.html"><img src="/static/pic/index/activity2.png" width="300" height="200"></a>
+      <img src="/static/pic/index/activity_logo.png" class="act_logo" />
+      <img src="/static/pic/index/activity_logo.png" class="act_logo2" />
+    </div>
+    <div class="separation">
+      <img src="/static/pic/index/separate.png" width="600"/>
     </div>
 
+
     <!--User Login In -->
-    <div class="login">
-      <nav>
+    <img src="/static/pic/index/logo.png" class="logo" height="50"/>
+    <div>
+      <nav class="login">
         {% if user.is_authenticate %}
         <p class="tips">{{user.username}} Level 6</p>
         {% else %}
-        <form method="post" >
-          <label for="username" autofocus autocomplete="on"> Username: </label>
-          <input type="text" id="username" name="username" />
+        <form method="post" name="post" action="/login">
+          <input type="text" id="username" name="username" value="User name" class="input username"/>
           <br/>
-          <label for="password"> Password:  </label>
-          <input type="password" id="password" name="password" />
+          <input type="password" id="password" name="password" class="input password"/>
           <br/>
-          <input type="submit" value="Login" />
-          <input type="button" value="Fogget"/>
+          <img src="/static/pic/index/login.png" onclick="document.post.submit()" class="submit"/>
         </form>
+        <img src="/static/pic/index/regist.png" onclick="alert('Regist page')"class="regist"/>
+        <img src="/static/pic/index/forget.png" onclick="alert('Forget password')" class="forget_pas"/>
         {% endif %}
       </nav>
     </div>
-    {% if book_list %}
-    <article> {% for book in book_list%}</article>
-    <a href="/reader/{{book.id}}/1/" ><img src="{{book.cover_path}}" alt="Cover of {{book.book_name}}" /></a>
-    {%endfor%}
-    {% else %}
-    <article>Error, plz refresh.</article>
-    {% endif %}
+    <!-- book_list -->
+    <div class="book_list">
+      {% if book_list %}
+      <article> {% for book in book_list%}</article>
+        <a href="/reader/{{book.id}}/1/" ><img src="{{book.cover_path}}" alt="Cover of {{book.book_name}}" width="180" height="280"/></a>
+      {%endfor%}
+      {% else %}
+      <article>Error, plz refresh.</article>
+      {% endif %}
+    </div>
+
+    <!--Search book-->
+    <div class="search">
+      <input type="text" class="input"/>
+      <input type="image" src="/static/pic/index/search_button.png" class="search_button"/>
+    </div>
   </body>
 </html>
-=======
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-  </head>
-  <body>
-
-    <aside id="right_aside">
-
-      <header> <h1>Midas Reader</h1> </header>
-      <div id="user_profile"><div>
-          <nav>
-            {% if user.is_authenticated %}
-            <p class="__tips">{{user.username}} Level 6</p>
-            {% else %}
-            <a href="../login"> login</a>
-            {% endif %}
-          </nav>
-          <div id="search"></div>
-          <div id="classified">
-            <a href="" class="more"></a>
-          </div>
-          <!-- hr -->
-          <div id="friend_current_reading"></div>
-        </aside>
-        <div id="container">
-          <section id="friend_state"></section>
-
-          <section>
-            {% if book_list %}
-            <article> {% for book in book_list%}</article>
-            <a href="/reader/{{book.id}}/1/" ><img src="{{book.cover_path}}" alt="Cover of {{book.book_name}}" /></a>
-            {%endfor%}
-            {% else %}
-            <article>Error, plz refresh.</article>
-            {% endif %}
-          </section>
-        </div>
-        <footer></footer>
-      </body>
-    </html>
->>>>>>> bcffedd96ec8c9501425c599c1d19bf3ed236a82
-

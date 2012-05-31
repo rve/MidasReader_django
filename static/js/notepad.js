@@ -124,7 +124,7 @@ $(document).ready(function()
                 document.getElementById("txtid").value = window.localStorage.txtid;
               }
 
-            $("#T_N").click(function()
+            $(".note").click(function()
                 {
                     $("#noteId").slideToggle("slow");
                     if (comment_flag==0) $("#T_N").val("Close Note");
