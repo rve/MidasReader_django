@@ -28,13 +28,12 @@
     <img src="/static/pic/logo.png" alt="" class="logo tipTip" title="MidaReader"/>
     <img src="/static/pic/comment_close.png" id="comment_close" onclick="comment_show()" class="tipTip" title="Show hotest comment"/>
     <img src="/static/pic/comment_close.png" onclick="comment_show_up()" class="comment_show_up tipTip" title="Rolling comments"/>
-    <img src="/static/pic/comment_open.png" id="comment_open" style="display:none" onclick="comment_hide()" class="tipTop" title="Hide hotest comment"/>
+    <img src="/static/pic/comment_open.png" id="comment_open" style="display:none" onclick="comment_hide()" class="tipTip" title="Hide hotest comment"/>
     <br />
     <br />
     <!--buttonList part-->
+    <img src="/static/pic/pen.png" class="note" />
     <div class="buttonList">
-      <input type="button"  value="Take Note" id="T_N"/>
-      <br/>
       <div id="noteId" style="display:none"/>
         <input onclick="Selectall()" type="button" value="SelectAll"/>
         Add Note:
@@ -80,7 +79,7 @@
         </div>
         <hr/><hr/>
         <div id="CNID" class="C_and_N" style="display:none">
-          <input type="button" class="comment" value="Comment">
+          <img src="/static/pic/comment.png" class="comment" />
         </div>
         <div class="pagenum">Page:  {{page_num}}</div>     
         {% else %}

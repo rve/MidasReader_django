@@ -1,5 +1,122 @@
 body
 {
-  background:-webkit-linear-gradient(left,rgb(255,255,255),rgb(229,229,229));
+background:-webkit-gradient(linear, 0 0, 2000 bottom, from(#FFFFFF), to(#E8E7E8));
 }
 
+.activity
+{
+  position:absolute;
+  left:200px;
+  top:50px;
+}
+
+.separation
+{
+  position:absolute;
+  left:200px;
+  top:350px;
+}
+
+.logo
+{
+  position:absolute;
+  left:900px;
+  top:50px;
+}
+
+.login
+{
+  position:absolute;
+  left:900px;
+  top:150px;
+}
+
+.book_list
+{
+  position:absolute;
+  left:200px;
+  top:400px;
+}
+
+.forget_pas
+{
+  position:absolute;
+  left:180px;
+  top:50px;
+}
+
+.regist
+{
+  position:absolute;
+  left:96px;
+  top:70px;
+}
+
+.search
+{
+  position:absolute;
+  left:900px;
+  top:350px;
+}
+
+.search_button
+{
+  position:absolute;
+  top:0px;
+  left:180px;
+}
+
+.input
+{
+  height:30px;
+  width:180px;
+  border:0px;
+  font-size:22px;
+}
+
+.username
+{
+  position:absolute;
+}
+
+.password
+{
+  position:absolute;
+  top:35px;
+}
+
+.submit
+{
+  position:absolute;
+  top:70px;
+}
+
+.act_logo
+{
+  position:absolute;
+  top:210px;
+  left:20px;
+}
+
+.act_logo2
+{
+  position:absolute;
+  top:210px;
+  left:330px;
+}
+
+.tag1
+{
+  position:absolute;
+  top:30px;
+  left:300px;
+  z-index:1;
+}
+
+.tag2
+{
+  position:absolute;
+  top:30px;
+  left:650px;
+  z-index:1;
+}
