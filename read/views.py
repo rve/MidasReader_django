@@ -90,8 +90,10 @@ def search(request):
         message = 'You submitted an empty form.'
     return HttpResponse('<h1> %s </h1>' % message)
 
+@csrf_exempt
 def test(request):
     return render_to_response('base.html')
+@csrf_exempt
 def print_it(request):
     if request.is_ajax():
         if request.method == 'POST':
