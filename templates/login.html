@@ -5,7 +5,7 @@
 	<title></title>
 </head>
 <body>
-  <form method="post" >
+  <form method="post" name="post">
     <label for="username" autofocus autocomplete="on"> Username: </label>
     <input type="text" id="username" name="username" />
     <br/>
@@ -13,6 +13,7 @@
     <input type="password" id="password" name="password" />
     <br/>
     <input type="submit" value="Submit" />
+<img src="/static/pic/index/login.png" onclick="document.post.submit()"/>
   </form>
 </body>
 </html>

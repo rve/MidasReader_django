@@ -71,10 +71,10 @@
 
     <!--Show text part-->
     {% if text %} 
-    <div id="container">
+    <div id="container" onmousedown="mouseDownEvent(event.clientX, event.clientY)" onmousemove="mouseMoveEvent(event.clientX, event.clientY)" onmouseup="mouseUpEvent(event.clientX, event.clientY)" oncontextmenu="return false;">
       <div class="page" id="1" style="display: block;"> 
       <img src="/static/pic/title_line.png" class="title_line"/>
-        <div class="content" id="contentId" onmousedown="mouseDownEvent(event.clientX, event.clientY)" onmousemove="mouseMoveEvent(event.clientX, event.clientY)" onmouseup="mouseUpEvent(event.clientX, event.clientY)" oncontextmenu="return false;">
+        <div class="content" id="contentId" >
           {{text}}
         </div>
         <hr/><hr/>

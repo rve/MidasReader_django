@@ -1,4 +1,4 @@
-.content, article
+.content
 {
 text-indent: 2em;
 line-height: 2;
@@ -48,9 +48,9 @@ background:-webkit-linear-gradient(left,rgb(237,236,235),rgb(209,208,208));
 
 .title_line
 {
-  position:fixed;
-  top:10%;
-  left:50%;
+  position:absolute;
+  top:100px;
+  left:500px;
 }
 
 .page_button
@@ -80,4 +80,14 @@ background:-webkit-linear-gradient(left,rgb(237,236,235),rgb(209,208,208));
   position:absolute;
   top:40px;
   left:480px;
+}
+
+#container
+{
+  position:absolute;
+  left:210px;
+  top:100px;
+  height:600px;
+  width:600px;
+  background:white;
 }
