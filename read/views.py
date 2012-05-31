@@ -2,7 +2,7 @@
 import codecs
 from django.shortcuts import render_to_response
 from django.template import Context, loader, RequestContext
-from read.models import Book
+from read.models import Book,UserProfile
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import Http404
 from django.views.decorators.csrf import csrf_exempt
@@ -92,3 +92,25 @@ def search(request):
 
 def test(request):
     return render_to_response('base.html')
+def print_it(request):
+    if request.is_ajax():
+        if request.method == 'POST':
+            #print  request.POST
+            page_num = request.POST['page_num']
+            try:
+                page_num_instance = UserProfile.objects.get(pk=1)
+                page_num_instance.current_page = page_num
+                page_num_instance.save()
+                print "page_num: "+page_num_instance.current_page
+            except UserProfile.DoesNotExist:
+                raise Http404
+            return HttpResponse("edited " + page_num)
+        elif request.method == 'GET':
+            try:
+                page_num_instance = UserProfile.objects.get(pk=1)
+                page_num = page_num_instance.current_page
+            except UserProfile.DoesNotExist:
+                raise Http404
+            return HttpResponse(page_num)
+    else:
+        return HttpResponse("no ajax")

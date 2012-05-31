@@ -135,8 +135,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'read',
-    'dajaxice',
-    'dajax',
     #'bookreader',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
@@ -174,4 +172,3 @@ LOGIN_REDIRECT_URL = reverse_lazy('index')
 
 AUTH_PROFILE_MODULE = 'read.UserProfile'
 
-DAJAXICE_MEDIA_PREFIX = 'dajaxice'
