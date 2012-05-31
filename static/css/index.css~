@@ -1,0 +1,8 @@
+body
+{
+  background:webkit-linear-gradient(left,rgb(255,255,255),rgb(229,229,229));
+}
+
+body {
+background:-webkit-linear-gradient(left,rgb(237,236,235),rgb(209,208,208));
+}

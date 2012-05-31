@@ -6,12 +6,6 @@ div.scroll
 	height:20px;
 	font-size:20px;
 	text-align:center;
-	display:none;
-}
-input.flip
-{
-	left:90%;
-	top:200px;
 }
 div.whole
 {
@@ -20,19 +14,41 @@ div.whole
 	width:100%;
 	text-align:center;
 	position:fixed;
-}
-
-input.agree
-{
-	display:none;
-}
-
-input.against
-{
-	display:none;
+    display:none;
 }
 
 .C_and_N
 {
   position:fixed;
+}
+
+.nearby_comment
+{
+  position:fixed;
+  top:25%;
+  width:200px;
+}
+
+.comment_show_up
+{
+  position:fixed;
+  left:12%;
+  top:50%;
+}
+
+.nearby_comment_bg
+{
+  z-index:1;
+  position:fixed;
+  top:24%;
+  width:196px;
+}
+
+.nearby_comment_content
+{
+  z-index:2;
+  position:fixed;
+  top:25%;
+  width:195px;
+  left:1%;
 }
