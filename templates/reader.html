@@ -32,7 +32,7 @@
     <br />
     <br />
     <!--buttonList part-->
-    <img src="/static/pic/pen.png" class="note" />
+    <img src="/static/pic/pen.png" class="note tipTip" title="Take note"/>
     <div class="buttonList">
       <div id="noteId" style="display:none"/>
         <input onclick="Selectall()" type="button" value="SelectAll"/>
@@ -59,7 +59,7 @@
     </div>
 
     <div class="commentBlock" style="display:none">
-      <input type="button" class="addCm" value="Commit"/>
+      <input type="button" class="addCm" value="Submit"/>
       <input type="button" class="exitComment" value="Close"/>
       <br />
       <textarea id="commentId" rows="4" class="commentText" cols="30"></textarea>
@@ -79,7 +79,7 @@
         </div>
         <hr/><hr/>
         <div id="CNID" class="C_and_N" style="display:none">
-          <img src="/static/pic/comment.png" class="comment" />
+          <img src="/static/pic/comment.png" class="comment tipTip" title="Comment"/>
         </div>
         <div class="pagenum">Page:  {{page_num}}</div>     
         {% else %}
