@@ -12,8 +12,10 @@
     <script type="text/javascript"> var page_num = {{page_num}};</script>
     <script type="text/javascript" src="/static/js/notepad.js"></script>
     <script type="text/javascript" src="/static/js/word_cloud.js"></script>
-    <!--<script src="/static/js/jq_fix_csrf.js" type="text/javascript">-->
+    <script src="/static/js/jq_fix_csrf.js" type="text/javascript">
     </script>
+    <script src="/static/js/jq_fix_csrf.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/static/js/hammer.js"></script>
     <script type="text/javascript">
       var server_page_num = page_num;
       function post_it(){
@@ -51,7 +53,7 @@ function startTimer(){
 <link rel="stylesheet" type="text/css" href="/static/css/tipTip.css" />
 <link rel="stylesheet" href="/static/css/reader.css" />
   </head>
-  <body onload="SetArray(100);onLoadEvent();init2();startTimer();" >
+  <body onload="SetArray(100);init2();startTimer();hammer_init()" >
 
     <!--rolling comments-->
     <div class="whole" id="wholeId" onmouseover="stop()" onmouseout="goon()">
@@ -88,11 +90,7 @@ function startTimer(){
     </div>
     <!--Show text part-->
     {% if text %} 
-    <div id="container" 
-      onmousedown="mouseDownEvent(event.clientX, event.clientY)" 
-      onmousemove="mousePosition(event,event.clientX, event.clientY)" 
-      onmouseup="mouseUpEvent(event.clientX, event.clientY)" 
-      oncontextmenu="return false;">
+    <div id="container" onmousemove="mousePosition(event)">
       <div class="title_line">
         <img src="/static/pic/title_line.png"/>
       </div>
