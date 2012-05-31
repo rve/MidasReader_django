@@ -10,8 +10,24 @@
         alert(data.message);
       }
     </script>
+    <script type="text/javascript" src="/static/js/prototype.js"></script>
+    <script src="/static/js/prototype.dajax.core.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      function calculate(){
+        Dajaxice.read.multiply(Dajax.process,{'a':$('a').value,'b':$('b').value})
+      }
+function jreturn_page(){
+  Dajaxice.read.returnPage(Dajax.process,{'book_id':1, 'page_num':2})
+}
+</script>
   </head>
   <body>
     <button onclick="Dajaxice.read.myexample(my_js_callback)">Click me!</button>
+    <div id="test2">
+      <input type="text" name="a" value="5" id="a"> x
+      <input type="text" name="b" value="6" id="b"> =
+      <input type="text" name="result" value="" id="result">
+      <input type="button" name="caculate" value="Let's Multiply!" id="caculate" onclick="calculate()">
+    </div>
   </body>
 </html>

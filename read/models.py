@@ -22,5 +22,5 @@ class UserProfile(models.Model):
 
     current_book = models.ForeignKey(Book)
     current_page = models.IntegerField()
-    def __unicode(self):
-        return self.current_page
+    def __unicode__(self):
+        return self.user.username +' @ '+ self.current_book.book_name

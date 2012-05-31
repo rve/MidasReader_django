@@ -8,3 +8,4 @@ static/js/*.js~
 *.bk
 *.html~
 templates/*.html~
+example/*
