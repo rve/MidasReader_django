@@ -1,8 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.core.urlresolvers import reverse_lazy
-from dajaxice.core import dajaxice_autodiscover
 from django.conf import settings
-dajaxice_autodiscover()
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
