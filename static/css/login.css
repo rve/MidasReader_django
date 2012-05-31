@@ -1,0 +1,57 @@
+.login
+{
+  position:absolute;
+  left:500px;
+  top:200px;
+}
+
+.regist
+{
+  position:absolute;
+  left:595px;
+  top:270px;
+}
+
+.forget_pas
+{
+  position:absolute;
+  top:240px;
+  left:680px;
+  height:18px;
+}
+
+.logo
+{
+  position:absolute;
+  left:530px;
+  top:160px;
+}
+.input
+{
+  height:30px;
+  width:180px;
+  border:0px;
+  font-size:22px;
+}
+
+body
+{
+  background:#E4E4E4;
+}
+
+.username
+{
+  position:absolute;
+}
+
+.password
+{
+  position:absolute;
+  top:35px;
+}
+
+.submit
+{
+  position:absolute;
+  top:70px;
+}
