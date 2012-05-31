@@ -1,0 +1,79 @@
+body {
+  background:-webkit-linear-gradient(left,rgb(237,236,235),rgb(209,208,208));
+}
+
+.logo
+{
+  margin-top:30px;
+  margin-left:50px;
+}
+
+.page_button
+{
+  margin-top:150px;
+  float:left;
+}
+
+.left_button
+{
+  margin-left:100px;
+  margin-top:200px;
+  float:left;
+}
+
+.comment_show_up
+{
+  margin-top:150px;
+}
+
+.page
+{
+  margin-top:80px;
+  margin-left:30px;
+}
+
+.content
+{
+  font-size:20px;
+  line-height:30px;
+  font-family:微软雅黑;
+  width:550px;
+}
+
+#container
+{
+  position:relative;
+  left:-30px;
+  background:white;
+  float:left;
+  width:640px;
+  text-align:center;
+  margin-top:10px;
+}
+
+.title_line
+{
+  float:right;
+  margin-top:30px;
+}
+
+.whole
+{
+  top:0px;
+  width:100%;
+  text-align:center;
+  position:fixed;
+  display:none;
+}
+
+.note
+{
+  position:relative;
+  left:-100px;
+  float:left;
+}
+
+#CNID
+{
+  position:fixed;
+}

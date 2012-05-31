@@ -4,59 +4,31 @@
     <meta charset="UTF-8">
     <title>Midas Reader</title>
     <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/blockUI.js"></script>
     <script type="text/javascript" src="/static/js/jquery.tipTip.js"></script>
+    <script type="text/javascript" src="/static/js/comment.js"></script>
     <script type="text/javascript" src="/static/js/gesture.js"></script>
     <script type="text/javascript" src="/static/js/beautify.js"></script>
-    <script type="text/javascript" src="/static/js/blockUI.js"></script>
     <script type="text/javascript"> var page_num = {{page_num}};</script>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/tipTip.css" />
-    <script src="/static/js/notepad.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="/static/css/notepad.css" />
-    <script type="text/javascript" src="/static/js/comment.js"></script>
-    <link rel="stylesheet" href="/static/css/comment.css" />
+    <script type="text/javascript" src="/static/js/notepad.js"></script>
     <script type="text/javascript" src="/static/js/word_cloud.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/tipTip.css" />
+    <link rel="stylesheet" href="/static/css/reader.css" />
   </head>
   <body onload="SetArray(100);onLoadEvent();init2()" >
-    <div class="page_button">
-      <a href="/reader/{{book_id}}/{{next_page}}" id="next_page"><img src="/static/pic/next_page.png" /></a>
-      <br/>
-      <a href="/reader/{{book_id}}/{{prev_page}}" id="prev_page"><img src="/static/pic/prev_page.png" class="prev_page" /></a>
-      <br/>
-    </div>
-    <!-- images part-->
-    <img src="/static/pic/logo.png" alt="" class="logo tipTip" title="MidaReader"/>
-    <img src="/static/pic/comment_close.png" id="comment_close" onclick="comment_show()" class="tipTip" title="Show hotest comment"/>
-    <img src="/static/pic/comment_close.png" onclick="comment_show_up()" class="comment_show_up tipTip" title="Rolling comments"/>
-    <img src="/static/pic/comment_open.png" id="comment_open" style="display:none" onclick="comment_hide()" class="tipTip" title="Hide hotest comment"/>
-    <br />
-    <br />
-    <!--buttonList part-->
-    <img src="/static/pic/pen.png" class="note tipTip" title="Take note"/>
-    <div class="buttonList">
-      <div id="noteId" style="display:none"/>
-        <input onclick="Selectall()" type="button" value="SelectAll"/>
-        Add Note:
-        <input type="text" name="addtext" id="addId" size="7"/>
-        <input onclick="AddText(page_num,document.all.addtext.value)" type="button" value="Add"/>
-        <input type="button" class="save" value="Save" />
-        <br/>
-        <textarea onkeyup="SetPage()" id="txtid" rows="10" cols="55" ></textarea>
-        <br/>
-      </div>
-      <input class="Sw" type="button" value="Show Wordle"/>
-      <br/>
-      <canvas id="canvasId" width="435px" height="250px" style="display:none" >
-        Your browser doesn't support canvas.
-      </canvas>
-    </div>
 
-    <!--comment part-->
+    <!--rolling comments-->
     <div class="whole" id="wholeId" onmouseover="stop()" onmouseout="goon()">
       <div id="scrollId" class="scroll"></div>
       <input type="button" class="agree" value="Agree(0)"/>
       <input type="button" class="against" value="Against(0)"/>
     </div>
+    <!--logo part-->
+    <div class="logo">
+      <img src="/static/pic/logo.png" class="tipTip" title="MidaReader"/>
+    </div>
+
+    <!--comment part-->
 
     <div class="commentBlock" style="display:none">
       <input type="button" class="addCm" value="Submit"/>
@@ -68,24 +40,65 @@
       <img src="/static/pic/nearby_comment_bg.png" class="nearby_comment_bg"/>
       <div class="nearby_comment_content"></div>
     </div>
-
+    <!--left_button part-->
+    <div class="left_button">
+      <div>
+        <img src="/static/pic/comment_close.png" id="comment_close" onclick="comment_show()" class="tipTip" title="Show hotest comment"/>
+        <img src="/static/pic/comment_open.png" id="comment_open" style="display:none" onclick="comment_hide()" class="tipTip" title="Hide hotest comment"/>
+      </div>
+      <div>
+        <img src="/static/pic/comment_close.png" onclick="comment_show_up()" class="comment_show_up tipTip" title="Rolling comments"/>
+      </div>
+    </div>
     <!--Show text part-->
     {% if text %} 
-    <div id="container" onmousedown="mouseDownEvent(event.clientX, event.clientY)" onmousemove="mouseMoveEvent(event.clientX, event.clientY)" onmouseup="mouseUpEvent(event.clientX, event.clientY)" oncontextmenu="return false;">
-      <div class="page" id="1" style="display: block;"> 
-      <img src="/static/pic/title_line.png" class="title_line"/>
+    <div id="container" 
+      onmousedown="mouseDownEvent(event.clientX, event.clientY)" 
+      onmousemove="mousePosition(event,event.clientX, event.clientY)" 
+      onmouseup="mouseUpEvent(event.clientX, event.clientY)" 
+      oncontextmenu="return false;">
+      <div class="title_line">
+        <img src="/static/pic/title_line.png"/>
+      </div>
+      <div class="page"> 
         <div class="content" id="contentId" >
           {{text}}
         </div>
         <hr/><hr/>
-        <div id="CNID" class="C_and_N" style="display:none">
-          <img src="/static/pic/comment.png" class="comment tipTip" title="Comment"/>
-        </div>
         <div class="pagenum">Page:  {{page_num}}</div>     
         {% else %}
         <div class="content">Please refresh.</div>
         {% endif %}
       </div>
+    </div>
+
+    <!--page_button part-->
+    <div class="page_button">
+      <div>
+        <a href="/reader/{{book_id}}/{{next_page}}" id="next_page"><img src="/static/pic/next_page.png" /></a>
+      </div>
+      <div>
+        <a href="/reader/{{book_id}}/{{prev_page}}" id="prev_page"><img src="/static/pic/prev_page.png" class="prev_page" /></a>
+      </div>
+    </div>
+
+    <img src="/static/pic/pen.png" class="note tipTip" title="Take note"/>
+
+    <!-- note part-->
+    <div id="noteId" style="display:none"/>
+      <input onclick="Selectall()" type="button" value="SelectAll"/>
+      Add Note:
+      <input type="text" name="addtext" id="addId" size="7"/>
+      <input onclick="AddText(page_num,document.all.addtext.value)" type="button" value="Add"/>
+      <input type="button" class="save" value="Save" />
+      <br/>
+      <textarea onkeyup="SetPage()" id="txtid" rows="10" cols="55" ></textarea>
+      <br/>
+    </div>
+
+    <!--appear comment-->
+    <div id="CNID" class="C_and_N" style="display:none">
+      <img src="/static/pic/comment.png" class="comment tipTip" title="Comment"/>
     </div>
   </body>
 </html>
