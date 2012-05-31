@@ -14,6 +14,8 @@ function distance(a,b)
 
 function judge(ev)
 {
+  console.log(ev);
+  mousePos={x:ev.touches[0].x,y:ev.touches[0].y};
   end_point=mousePos;
   if (distance(start_point,end_point)<100) return ;
   if (end_point.x>start_point.x) document.getElementById("next_page").click();
@@ -22,30 +24,16 @@ function judge(ev)
 
 function record(ev)
 {
+  mousePos={x:ev.position.x,y:ev.position.y};
   start_point=mousePos;
 }
 
 function appear_comment(ev)
 {
+  console.log(ev);
+  mousePos={x:ev.position[0].x,y:ev.position[0].y};
   LastMousePos=mousePos;
   $(".C_and_N").slideToggle("slow");
   document.getElementById("CNID").style.left=mousePos.x.toString(10)+"px";
   document.getElementById("CNID").style.top=mousePos.y.toString(10)+"px";
-}
-
-function mousePosition(ev)
-{
-  if(ev.pageX || ev.pageY){
-    mousePos={x:ev.pageX, y:ev.pageY};
-  }
-  else
-    mousePos={
-      x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
-      y:ev.clientY + document.body.scrollTop  - document.body.clientTop
-    };
-
-    if (distance(mousePos,LastMousePos)>50 && (!$(".C_and_N").is("hidden")))
-      {
-        $(".C_and_N").hide();
-      }
 }
