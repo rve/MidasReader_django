@@ -1,7 +1,7 @@
 # Django settings for reader project.
 from django.core.urlresolvers import reverse_lazy
 
-DEBUG = False
+DEBUG = True 
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
