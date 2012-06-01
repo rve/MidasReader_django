@@ -11,16 +11,18 @@ function onLoadEvent()
   var      StartEvent = SupportsTouches ? "touchstart" : "mousedown",
   MoveEvent = SupportsTouches ? "touchmove" : "mousemove",
   EndEvent = SupportsTouches ? "touchend" : "mouseup";
-  //alert(StartEvent);
   $("#container").bind(StartEvent,function(event){
+   // alert(StartEvent);
     mousePos=getMousePoint(event);
     mouseDownEvent(event.clientX,event.clientY);
   });
   $("#container").bind(MoveEvent,function(event){
+   // alert(MoveEvent);
     mousePos=getMousePoint(event);
     mouseMoveEvent(event.clientX,event.clientY);
                        });
   $("#container").bind(EndEvent,function(){
+   // alert(EndEvent);
     mousePos=getMousePoint(event);
     mouseUpEvent(event.clientX,event.clientY);
   })

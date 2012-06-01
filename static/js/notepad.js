@@ -131,7 +131,7 @@ $(document).ready(function()
                       {
                       top:"50%",
                       left:"50%",
-                      width:"600px",
+                      width:"500px",
                       background:"#E4E4E4",
                     }
                   });
