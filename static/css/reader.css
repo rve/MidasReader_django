@@ -23,6 +23,7 @@ body {
 
 .comment_show_up
 {
+  position:relative;
   margin-top:150px;
 }
 
@@ -78,7 +79,20 @@ body {
   position:fixed;
 }
 
+.nearby_comment_content
+{
+  position:relative;
+  width:150px;
+}
+
 .nearby_comment
 {
-  width:100px;
+  width:150px;
+  float:left;
+  margin-top:200px;
+}
+
+.nearby_comment_bg
+{
+  width:150px;
 }
