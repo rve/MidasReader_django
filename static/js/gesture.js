@@ -2,7 +2,7 @@ var hammer,mousePos={x:0,y:0},LastMousePos={x:0,y:0},start_point,end_point;
 function hammer_init()
 {
   hammer=new Hammer(document.getElementById("container"));
-  hammer.ondragstart=record
+  hammer.ondragstart=record;
   hammer.ondragend=judge;
   hammer.ontap=appear_comment;
 }
@@ -17,14 +17,28 @@ function judge(ev)
   console.log(ev);
   mousePos={x:ev.touches[0].x,y:ev.touches[0].y};
   end_point=mousePos;
+  alert("return");
   if (distance(start_point,end_point)<100) return ;
-  if (end_point.x>start_point.x) document.getElementById("next_page").click();
-  else document.getElementById("prev_page").click();
+  if (end_point.x>start_point.x) 
+    {
+    alert("next");
+    location.href = "/reader/{{book_id}}/{{next_page}}";
+    alert("next");
+    }
+
+
+
+  else 
+    {
+    location.href = "/reader/{{book_id}}/{{prev_page}}"
+    alert("prev");
+    }
 }
 
 function record(ev)
 {
   mousePos={x:ev.position.x,y:ev.position.y};
+  //alert();
   start_point=mousePos;
 }
 
