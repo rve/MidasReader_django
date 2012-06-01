@@ -77,3 +77,8 @@ body {
 {
   position:fixed;
 }
+
+.nearby_comment
+{
+  width:100px;
+}
