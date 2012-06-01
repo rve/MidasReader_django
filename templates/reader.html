@@ -9,6 +9,7 @@
 var book_id={{book_id}};
 var prev_pgae = {{prev_page}};
 var next_page = {{next_page}};
+var max_page_num  = {{max_page_num}};
 </script>
 <script type="text/javascript" src="/static/js/blockUI.js"></script>
 <script type="text/javascript" src="/static/js/jquery.tipTip.js"></script>
@@ -21,16 +22,20 @@ var next_page = {{next_page}};
   var server_page_num = page_num;
   function post_it(){
     //console.log("post_it start");
+    if (page_num > max_page_num-1)
+      page_num = max_page_num-1;
     $.post("/print/", {
 current_page:page_num+1
 },
 function(data) {
-console.log("data: "+data);
+//console.log("data: "+data);
 alert(data);
 });
 }
 function post_it_back(){
   //console.log(page_num);
+  if ( page_num -1 == 0)
+    page_num = 2;
   $.post("/print/", {
 current_page:page_num-1
 },

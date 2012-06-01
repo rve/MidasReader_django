@@ -42,7 +42,6 @@ def index(request):
         })
     return HttpResponse(t.render(c))
 def reader(request, book_id, page):
-    if page == 0 : page=1;
 #get book
     try:
         book_instance = Book.objects.get(pk=book_id)
@@ -51,19 +50,28 @@ def reader(request, book_id, page):
 
 #read text of the book
     fp = open(book_instance.txt_path)
-    fp.seek((int(page)-1) *1000)
     prev_page = str(int(page)-1)
-    if fp.read(1) == '':
+    text = ''
+
+#get book
+
+    for x in xrange((int(page)-1) * 30):
+        fp.readline()
+    for x in xrange(30):
+        text += fp.readline()
+        
+    if text == '' :
         text = 'The end'
         next_page = page 
     else:
-        fp.seek((int(page)-1) *1000)
-        text =  ( fp.read(1000) )
         next_page = str(int(page)+1)
 
-    if prev_page == '0' : prev_page ='1'
 
     fp.close()
+
+    if  int(prev_page) <= 0 : prev_page = str(1)
+    
+    print book_instance.max_page_num
 
 #load template
     t = loader.get_template("reader.html")
@@ -72,8 +80,9 @@ def reader(request, book_id, page):
         'next_page' : next_page,
         'prev_page' : prev_page,
         'page_num': page,
-        'current_page':page,
-        'book_id' : book_id,
+        'current_page': page,
+        'book_id': book_id,
+        'max_page_num': book_instance.max_page_num,
         })
     return HttpResponse(t.render(c))
 def display_meta(request):

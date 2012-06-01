@@ -5,6 +5,7 @@ read/*.py~
 reader/*.pyc
 reader/*.py~
 static/js/*.js~
+static/css/*.css~
 *.swp
 *.tmp
 *.bk

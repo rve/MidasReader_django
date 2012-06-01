@@ -7,6 +7,7 @@ class Book(models.Model):
     book_name = models.CharField(max_length=500)
     cover_path = models.CharField(max_length=100)
     txt_path = models.CharField(max_length=100)
+    max_page_num = models.IntegerField()
 
     def __unicode__(self):
         return self.book_name
