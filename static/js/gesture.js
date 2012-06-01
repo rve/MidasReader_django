@@ -67,11 +67,14 @@ function touchEnd(ev)
         {
           if (_points[0].x<_points[_points.length-1].x)
             {
-              location.href="/reader/{{book_id}}/{{next_page}}";
+              post_it();
+              location.href="/reader/"+book_id.toString(10) + "/"+  next_page.toString(10)+"/";
             }
             else 
               {
-                location.href="/reader/{{book_id}}/{{prev_page}}";
+                post_it_back();
+              //location.href='../reader/'+book_id.toString(10) + "/"+  prev_page.toString(10)+"/";
+              location.href='/reader/'+book_id.toString(10) + "/"+  prev_page.toString(10)+"/";
               }
         }
     }
