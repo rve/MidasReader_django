@@ -58,23 +58,24 @@ body {
   margin-top:30px;
 }
 
-.whole
+div.whole
 {
-  top:0;
+  top:0px;
+  left:0px;
   width:100%;
   text-align:center;
   position:fixed;
   display:none;
 }
 
-  div.scroll
+div.scroll
 {
-	overflow:hidden;
-	width:100%;
-	line-height:20px;
-	height:20px;
-	font-size:20px;
-	text-align:center;
+  overflow:hidden;
+  width:100%;
+  line-height:20px;
+  height:20px;
+  font-size:20px;
+  text-align:center;
 }
 
 
@@ -107,3 +108,29 @@ body {
 {
   width:150px;
 }
+
+#commentId,#txtid
+{
+  border:0px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+}
+
+.addCm,.exitComment,.buttoncss,.save
+{
+  margin-top:5px;
+  margin-right:10px;
+  font-family: "tahoma", "微软雅黑"; 
+  font-size:9pt; 
+  color: #716161; 
+  -moz-border-radius:3px;
+  border-radius:3px;
+  border: 1px #E1E0E0 solid; 
+  background-image:url(../images/bluebuttonbg.gif); 
+  background-color: #F3F1F2; 
+  cursor: hand; 
+  font-style: normal ; 
+  width:60px; 
+  height:22px; 
+} 
+

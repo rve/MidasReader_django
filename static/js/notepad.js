@@ -129,10 +129,10 @@ $(document).ready(function()
                     message: $("#noteId"),
                     css:
                       {
-                      top:"50%",
-                      left:"50%",
-                      width:"500px",
-                      background:"#E4E4E4",
+                                              '-webkit-border-radius':'15px',
+                                              '-moz-border-radius':'15px',
+                                              background:"#D1D0D0",
+                                            
                     }
                   });
                   $(".blockOverlay").attr("title","Click to close").click($.unblockUI);

@@ -2,7 +2,9 @@
 {
   position:absolute;
   left:500px;
-  top:200px; 
+  top:200px;
+    background:gray; 
+    background-color:#ffcc00; 
 }
 
 .regist

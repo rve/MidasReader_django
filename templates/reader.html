@@ -81,7 +81,7 @@ function startTimer(){
     <!--comment part-->
 
     <div class="commentBlock" style="display:none">
-      <input type="button" class="addCm" value="Submit"/>
+      <input type="button" class="addCm" value="Comment"/>
       <input type="button" class="exitComment" value="Close"/>
       <br />
       <textarea id="commentId" rows="4" class="commentTekjkxt" cols="30"></textarea>
@@ -132,13 +132,15 @@ function startTimer(){
 
     <!-- note part-->
     <div id="noteId" style="display:none"/>
-      <input onclick="Selectall()" type="button" value="SelectAll"/>
-      Add Note:
-      <input type="text" name="addtext" id="addId" size="15"/>
-      <input onclick="AddText(page_num,document.all.addtext.value)" type="button" value="Add"/>
-      <input type="button" class="save" value="Save" />
+      <input onclick="Selectall()" type="button" value="All" class="buttoncss"/>
+        <input type="button" class="save" value="Save" >
+      <div class="word">Add Note:
+        <input type="text" name="addtext" id="addId" size="15"/>
+      </div>
+
+      <input onclick="AddText(page_num,document.all.addtext.value)" type="button" value="Add" class="buttoncss"/>
       <br/>
-      <textarea onkeyup="SetPage()" id="txtid" rows="10" cols="55" ></textarea>
+      <textarea onkeyup="SetPage()" id="txtid" rows="10" cols="45" ></textarea>
       <br/>
     </div>
 
@@ -146,5 +148,6 @@ function startTimer(){
     <div id="CNID" class="C_and_N" style="display:none">
       <img src="/static/pic/comment.png" class="comment tipTip" title="Comment"/>
     </div>
+    <!--loading -->
   </body>
 </html>

@@ -90,41 +90,40 @@ $(document).ready(function()
                                         agreeNum[nownum]++;
                                         $(".agree").val("Agree("+agreeNum[nownum].toString(10)+")");
                                       });
-                                      $(".against").click(function()
-                                                          {
-                                                            againstNum[nownum]++;
-                                                            $(".against").val("Against("+againstNum[nownum].toString(10)+")");
-                                                          });
-
-                                                          $(".comment").click(function()
-                                                                              {
-                                                                                $.blockUI({
-                                                                                  message: $(".commentBlock"),
-                                                                                  css:
-                                                                                    {
-                                                                                    position:"absolute",
-                                                                                    background:"#EDECEB",
-                                                                                  }
-                                                                                });
-                                                                                $(".addCm").click($.unblockUI);
-                                                                                $(".blockOverlay").attr("title","Close").click($.unblockUI);
-                                                                                $(".addCm").click(function()
-                                                                                                  {
-                                                                                                    addComment();
-                                                                                                  })
-                                                                                                  $(".exitComment").click($.unblockUI);
-                                                                                                  $(".commentText").click(function()
-                                                                                                                          {
-                                                                                                                            document.getElementById("commentId").focus();
-                                                                                                                          })
-                                                                              })
-                                                                              $("#txtid").click(function()
-                                                                                                {
-                                                                                                  document.getElementById("txtid").focus();
-                                                                                                })
-                                                                                                $("#addId").click(function()
-                                                                                                                  {
-                                                                                                                    document.getElementById("addId").focus();
-                                                                                                                  })
-                  })
-
+                    $(".against").click(function()
+                                        {
+                                          againstNum[nownum]++;
+                                          $(".against").val("Against("+againstNum[nownum].toString(10)+")");
+                                        });
+                    $(".comment").click(function()
+                                        {
+                                          $.blockUI({
+                                            message: $(".commentBlock"),
+                                            css:
+                                              {
+                                              '-webkit-border-radius':'15px',
+                                              '-moz-border-radius':'15px',
+                                              background:"#D1D0D0",
+                                            }
+                                          });
+                    $(".addCm").click($.unblockUI);
+                    $(".blockOverlay").attr("title","Close").click($.unblockUI);
+                                        });
+                    $(".addCm").click(function()
+                                      {
+                                        addComment();
+                                      })
+                    $(".exitComment").click($.unblockUI);
+                    $(".commentText").click(function()
+                                            {
+                                              document.getElementById("commentId").focus();
+                                            })
+                                        })
+                    $("#txtid").click(function()
+                                      {
+                                        document.getElementById("txtid").focus();
+                                      })
+                    $("#addId").click(function()
+                                      {
+                                        document.getElementById("addId").focus();
+                                      })
