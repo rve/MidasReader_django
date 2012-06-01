@@ -11,23 +11,22 @@ function onLoadEvent()
   var      StartEvent = SupportsTouches ? "touchstart" : "mousedown",
   MoveEvent = SupportsTouches ? "touchmove" : "mousemove",
   EndEvent = SupportsTouches ? "touchend" : "mouseup";
-<<<<<<< HEAD
   $("#container").bind(StartEvent,function(event){
-   // alert(StartEvent);
+    // alert(StartEvent);
     mousePos=getMousePoint(event);
     mouseDownEvent(event.clientX,event.clientY);
   });
   $("#container").bind(MoveEvent,function(event){
-   // alert(MoveEvent);
+    // alert(MoveEvent);
     mousePos=getMousePoint(event);
     mouseMoveEvent(event.clientX,event.clientY);
-                       });
+  });
   $("#container").bind(EndEvent,function(){
-   // alert(EndEvent);
+    // alert(EndEvent);
     mousePos=getMousePoint(event);
     mouseUpEvent(event.clientX,event.clientY);
   })
-=======
+
   if (!SupportsTouches)
     {
       $("#container").bind(StartEvent,function(event){
@@ -49,6 +48,7 @@ function onLoadEvent()
         goal.addEventListener("touchstart",touchStart,false);
         goal.addEventListener("touchmove",touchMove,false);
         goal.addEventListener("touchend",touchEnd,false);
+        goal.addEventListener("gestureend",gestureEnd,false);
       }
 }
 
@@ -90,20 +90,18 @@ function touchEnd(ev)
             else 
               {
                 post_it_back();
-              //location.href='../reader/'+book_id.toString(10) + "/"+  prev_page.toString(10)+"/";
-              location.href='/reader/'+book_id.toString(10) + "/"+  prev_page.toString(10)+"/";
+                location.href='../reader/'+book_id.toString(10) + "/"+  prev_page.toString(10)+"/";
               }
         }
     }
-    else
-      {
-        LastMousePos=mousePos;
-        $(".C_and_N").slideToggle("slow");
-        console.log(mousePos.x);
-        document.getElementById("CNID").style.left=mousePos.x.toString(10)+"px";
-        document.getElementById("CNID").style.top=mousePos.y.toString(10)+"px";
-      }
->>>>>>> 9b07b00d1bd33e5236bb4e4d7696c2e779441604
+}
+
+function gestureEnd()
+{
+  LastMousePos=mousePos;
+  $(".C_and_N").slideToggle("slow");
+  document.getElementById("CNID").style.left=mousePos.x.toString(10)+"px";
+  document.getElementById("CNID").style.top=mousePos.y.toString(10)+"px";
 }
 
 function Point(x,y)
