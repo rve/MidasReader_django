@@ -28,9 +28,18 @@ console.log("data: "+data);
 alert(data);
 });
 }
+<<<<<<< HEAD
 function post_it_back(){
   //console.log(page_num);
   $.post("/print/", {
+=======
+      function post_it_back(){
+        if (page_num == 1) 
+        {
+          page_num = 2;}
+        //console.log(page_num);
+        $.post("/print/", {
+>>>>>>> 3923f01f3b322fe82935b97bc5a38f1affb5a4b3
 current_page:page_num-1
 },
 function(data) {
@@ -105,7 +114,7 @@ function startTimer(){
         <img src="/static/pic/title_line.png"/>
       </div>
       <div class="page"> 
-        <div class="content" id="contentId" >
+        <div class="content" id="contentId">
           {{text}}
         </div>
         <hr/><hr/>
@@ -132,7 +141,7 @@ function startTimer(){
     <div id="noteId" style="display:none"/>
       <input onclick="Selectall()" type="button" value="SelectAll"/>
       Add Note:
-      <input type="text" name="addtext" id="addId" size="7"/>
+      <input type="text" name="addtext" id="addId" size="15"/>
       <input onclick="AddText(page_num,document.all.addtext.value)" type="button" value="Add"/>
       <input type="button" class="save" value="Save" />
       <br/>
