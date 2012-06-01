@@ -26,6 +26,16 @@ console.log(page_num)
 //location.href="/reader/{{book_id}}/"+page_num.toString(10);
 });
 }
+      function post_it_back(){
+        console.log(page_num);
+        $.post("/print/", {
+current_page:page_num-1
+},
+function(data) {
+console.log(page_num)
+//location.href="/reader/{{book_id}}/"+page_num.toString(10);
+});
+}
 function get_it() {
   $.get("/print", function(data){
       //alert(data);
@@ -110,7 +120,7 @@ function startTimer(){
         <a href="/reader/{{book_id}}/{{next_page}}" id="next_page" onclick="post_it()"><img src="/static/pic/next_page.png" /></a>
       </div>
       <div>
-        <a href="/reader/{{book_id}}/{{prev_page}}" id="prev_page"><img src="/static/pic/prev_page.png" class="prev_page" /></a>
+        <a href="/reader/{{book_id}}/{{prev_page}}" id="prev_page" onclick="post_it_back()"><img src="/static/pic/prev_page.png" class="prev_page" /></a>
       </div>
     </div>
 
