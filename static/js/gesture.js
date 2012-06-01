@@ -4,26 +4,85 @@ function onLoadEvent()
 {
   _points = new Array();
 
- SupportsTouches=("createTouch" in document);
+  SupportsTouches=("createTouch" in document);
   var canvas = document.getElementById('contentId');
   _rc = getCanvasRect(canvas); 
   _isDown = false;
   var      StartEvent = SupportsTouches ? "touchstart" : "mousedown",
   MoveEvent = SupportsTouches ? "touchmove" : "mousemove",
   EndEvent = SupportsTouches ? "touchend" : "mouseup";
-  //alert(StartEvent);
-  $("#container").bind(StartEvent,function(event){
-    mousePos=getMousePoint(event);
-    mouseDownEvent(event.clientX,event.clientY);
-  });
-  $("#container").bind(MoveEvent,function(event){
-    mousePos=getMousePoint(event);
-    mouseMoveEvent(event.clientX,event.clientY);
-                       });
-  $("#container").bind(EndEvent,function(){
-    mousePos=getMousePoint(event);
-    mouseUpEvent(event.clientX,event.clientY);
-  })
+  if (!SupportsTouches)
+    {
+      $("#container").bind(StartEvent,function(event){
+        mousePos=getMousePoint(event);
+        mouseDownEvent(event.clientX,event.clientY);
+      });
+      $("#container").bind(MoveEvent,function(event){
+        mousePos=getMousePoint(event);
+        mouseMoveEvent(event.clientX,event.clientY);
+      });
+      $("#container").bind(EndEvent,function(){
+        mousePos=getMousePoint(event);
+        mouseUpEvent(event.clientX,event.clientY);
+      })
+    }
+    else
+      {
+        var goal=document.getElementById("container");
+        goal.addEventListener("touchstart",touchStart,false);
+        goal.addEventListener("touchmove",touchMove,false);
+        goal.addEventListener("touchend",touchEnd,false);
+      }
+}
+
+var startX,startY;
+
+function touchStart(ev)
+{
+  ev.preventDefault();
+  if (!ev.touches.length) return ;
+  startX=ev.touches[0].pageX;
+  startY=ev.touches[0].pageY;
+  mousePos={x:startX,y:startY};
+  _points.length=1;
+  _points[0]=mousePos;
+}
+
+function touchMove(ev)
+{
+  ev.preventDefault();
+  if (!ev.touches.length) return ;
+  var touch=ev.touches[0];
+  mousePos={x:touch.pageX,y:touch.pageY};
+  _points.push(mousePos);
+}
+
+function touchEnd(ev)
+{
+  ev.preventDefault();
+  if (_points.length>=10)
+    {
+      var result=judge_gesture();
+      if (result=="Line" )
+        {
+          if (_points[0].x<_points[_points.length-1].x)
+            {
+              location.href="/reader/{{book_id}}/{{next_page}}";
+            }
+            else 
+              {
+                location.href="/reader/{{book_id}}/{{prev_page}}";
+              }
+        }
+    }
+    else
+      {
+        LastMousePos=mousePos;
+        $(".C_and_N").slideToggle("slow");
+        console.log(mousePos.x);
+        document.getElementById("CNID").style.left=mousePos.x.toString(10)+"px";
+        document.getElementById("CNID").style.top=mousePos.y.toString(10)+"px";
+      }
 }
 
 function Point(x,y)
@@ -31,27 +90,32 @@ function Point(x,y)
   return {x:x,y:y};
 }
 
-getMousePoint=function(ev){
+function getMousePoint(ev)
+{
   var x = y = 0,
   doc = document.documentElement,
   body = document.body;
   if(!ev) ev=window.event;
-  if (window.pageYoffset) {
-    x = window.pageXOffset;
-    y = window.pageYOffset;
-  }else{
-    x = (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);
-    y = (doc && doc.scrollTop  || body && body.scrollTop  || 0) - (doc && doc.clientTop  || body && body.clientTop  || 0);
-  }
-  if(SupportsTouches){
-    var evt = ev.touches.item(0);//仅支持单点触摸,第一个触摸点
-    x=evt.pageX;
-    y=evt.pageY;
-  }else{
-    x += ev.clientX;
-    y += ev.clientY;
-  }
-  return {'x' : x, 'y' : y};
+  if (window.pageYoffset) 
+    {
+      x = window.pageXOffset;
+      y = window.pageYOffset;
+    }
+    else
+      {
+        x = (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);
+        y = (doc && doc.scrollTop  || body && body.scrollTop  || 0) - (doc && doc.clientTop  || body && body.clientTop  || 0);
+      }
+      if(SupportsTouches)
+        {
+          var evt = ev.touches.item(0);//仅支持单点触摸,第一个触摸点
+          x=evt.pageX;
+          y=evt.pageY;
+        }else{
+          x += ev.clientX;
+          y += ev.clientY;
+        }
+        return {'x' : x, 'y' : y};
 };
 
 function getCanvasRect(canvas)

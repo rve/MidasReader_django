@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login
 from django.views.generic.date_based import object_detail
 from django.contrib.auth.decorators import login_required
+from django.utils import simplejson
 @csrf_exempt
 def sign_in(request):
     if request.method == 'POST' :
@@ -95,24 +96,24 @@ def test(request):
     return render_to_response('base.html')
 @csrf_exempt
 def print_it(request):
+    jsonDict = {}
     if request.method == 'POST':
         #print  request.POST
-        page_num = request.POST['current_page']
+        jsonDict['page_num'] = request.POST['current_page']
         try:
             page_num_instance = UserProfile.objects.get(pk=1)
-            page_num_instance.current_page = page_num
+            page_num_instance.current_page = jsonDict['page_num']
             page_num_instance.save()
             print "page_num: "+page_num_instance.current_page
         except UserProfile.DoesNotExist:
             raise Http404
-        return HttpResponse("edited " + page_num)
+        return HttpResponse(simplejson.dumps(jsonDict),mimetype='application/json')
     elif request.method == 'GET':
         try:
             page_num_instance = UserProfile.objects.get(pk=1)
-            page_num = page_num_instance.current_page
+            jsonDict['page_num']  = page_num_instance.current_page
         except UserProfile.DoesNotExist:
             raise Http404
-        return HttpResponse(page_num)
-    else:
-        return HttpResponse("error no ajax")
+        return HttpResponse(simplejson.dumps(jsonDict),mimetype='application/json')
+    return HttpResponse(simplejson.dumps(jsonDice),mimetype='application/javascript')
 
