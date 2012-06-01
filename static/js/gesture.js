@@ -72,9 +72,9 @@ function touchEnd(ev)
             }
             else 
               {
-                post_it_back();
+                //post_it_back();
               //location.href='../reader/'+book_id.toString(10) + "/"+  prev_page.toString(10)+"/";
-              location.href='/reader/'+book_id.toString(10) + "/"+  prev_page.toString(10)+"/";
+              //location.href='/reader/'+book_id.toString(10) + "/"+  prev_page.toString(10)+"/";
               }
         }
     }
