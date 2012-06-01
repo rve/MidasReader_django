@@ -29,13 +29,13 @@ function comment_show_up()
       s.scrollTop=lastScrollTop;
       document.getElementById("wholeId").style.backgroundColor="#F4F6F3";
       timer=setInterval(scrollstart,100);
-      $(".comment_show_up").css("left","11%");
+      $(".comment_show_up").css("left","-10px");
     }
     else
       {
         lastScrollTop=s.scrollTop;
         clearInterval(timer);
-        $(".comment_show_up").css("left","12%");
+        $(".comment_show_up").css("left","0px");
       }
       comment_up_flag=(comment_up_flag+1) % 2;
 }
