@@ -1,37 +1,224 @@
-<!DOCTYPE HTML>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <script type="text/javascript" src="/static/js/jquery.js">
-    </script>
-    <script src="/static/js/jq_fix_csrf.js" type="text/javascript">
-    </script>
-    <script type="text/javascript">
-      function click_me(){
-        location.href = "http://www.baidu.com";
-      }
-      function post_it(){
-    $.post("/print/", {
-page_num: 999
-},
-function(data) {
-alert(data);
-});
-      }
-function get_it() {
-  $.get("/print", function(data){
-      alert(data);
-      });
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><script 
+type="text/javascript">window["_gaUserPrefs"] = { ioo : 
+function() { return true; } }</script><head>
+	<meta http-equiv="Content-Type" content="text/html; 
+charset=utf-8">
+	<title>ios拖动</title>
+	<style type="text/css">
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption, table, tbody, tfoot, thead, tr, th, td {
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
 }
+		#wrap{
+			width:640px;
+			height:640px;
+			margin:0 auto;
+			position:relative;
+			text-align:center;
+		}
+		#wrap img{
+			margin-top:245px;
+		}
+		h3{
+			text-align:center;
+			margin:50px 0;
+		}
+		#div1,#div2,#div3,#div4{
+			position:absolute;
+			border:1px dashed #000;
+			width:100px;
+			height:100px;
+		}
+		#div1{
+			top:0;
+			left:0;
+		}
+		#div2{
+			top:0;
+			right:0;
+		}
+		#div3{
+			bottom:0;
+			left:0;
+		}
+		#div4{
+			bottom:0;
+			right:0;
+		}
+	</style>
+<style 
+type="text/css">#yddContainer{display:block;font-family:Microsoft 
+YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px 
+solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 
+28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none 
+solid;border-width:1px}#yddTopBorderlr 
+.ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 
+0px 0px 0px;padding-top:17px;background-position:-16px 
+-44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left 
+-44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 
+0;padding:0 5px;height:18px;border-bottom:1px 
+solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px 
+-1px 0;padding:0 4px;line-height:18px;border:1px 
+solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container 
+a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left 
+-22px}.ydd-padding010{padding:0 
+10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper 
+.ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper 
+a,#yddWrapper a:hover,#yddWrapper 
+a:visited{color:#50799b}#yddWrapper 
+.ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+<body onload-"">
+<h3>点按下方头像拖动,使四角的方框变红</h3>
+<div id="wrap"><div id="div1"></div><div id="div2" style="border: 
+1px solid rgb(0, 0, 0); background-color: red; 
+background-position: initial initial; background-repeat: initial 
+initial; "></div><div id="div3"></div><div id="div4"></div>
+	<img id="dragElement" src="/static/cover/Othello.jpg" alt="" 
+style="position: relative; left: 0px; top: 0px; ">
+</div>
 
+<script type="text/javascript">
+
+var getDragClass=(function(){
+var SupportsTouches = ("createTouch" in 
+document),//判断是否支持触摸
+	StartEvent = SupportsTouches ? "touchstart" : 
+"mousedown",//支持触摸式使用相应的事件替代
+	MoveEvent = SupportsTouches ? "touchmove" : "mousemove",
+	EndEvent = SupportsTouches ? "touchend" : "mouseup",
+
+	$=function(id){
+		return document.getElementById(id);
+	},
+	preventDefault=function(ev){
+		if(ev)ev.preventDefault();
+		else window.event.returnValue = false;
+	},
+	getMousePoint=function(ev){
+		var x = y = 0,
+			doc = document.documentElement,
+			body = document.body;
+			if(!ev) ev=window.event;
+			if (window.pageYoffset) {
+				x = window.pageXOffset;
+				y = window.pageYOffset;
+			}else{
+				x = (doc && doc.scrollLeft || 
+body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && 
+body.clientLeft || 0);
+				y = (doc && doc.scrollTop  || 
+body && body.scrollTop  || 0) - (doc && doc.clientTop  || body && 
+body.clientTop  || 0);
+			}
+			if(SupportsTouches){
+				var evt = 
+ev.touches.item(0);//仅支持单点触摸,第一个触摸点
+				x=evt.pageX;
+				y=evt.pageY;
+			}else{
+
+				x += ev.clientX;
+				y += ev.clientY;
+			}
+			return {'x' : x, 'y' : y};
+	};
+	function _drag(opt){
+		this.el=typeof 
+opt.el=='string'?$(opt.el):opt.el;//被拖动节点
+		this.onstart=opt.start || new Function();//
+		this.onmove=opt.move || new Function();
+		this.onend=opt.end || new Function();
+		this.action=false;
+		this.init();
+	}
+	_drag.prototype={
+		init:function(){
+			this.el.style.position='relative';
+			
+this.el['on'+StartEvent]=this.bind(function(e){//绑定节点的 [鼠标按下/触摸开始] 事件
+				preventDefault(e);
+				if(this.action)return false;
+				else this.action=true;
+				this.startPoint=getMousePoint(e);
+				this.onstart();
+				
+document['on'+MoveEvent]=this.bind(function(e){
+					
+preventDefault(e);//取消文档的默认行为[鼠标移动、触摸移动]
+					
+this.nowPoint=getMousePoint(e);
+					
+this.el.style.left=this.nowPoint.x-this.startPoint.x+'px';
+					
+this.el.style.top=this.nowPoint.y-this.startPoint.y+'px';
+					this.onmove();
+				},this);
+				
+document['on'+EndEvent]=document['ontouchcancel']=this.bind(function(){
+					
+document['on'+EndEvent]=document['ontouchcancel']=document['on'+MoveEvent]=null;
+					this.action=false;
+					this.onend();
+				},this);
+			},this);
+		},
+		bind:function(fn,obj){
+			return function(){
+				fn.apply(obj,arguments);
+			}
+		},
+		tool:null
+	}
+	return function(opt){
+		return new _drag(opt);
+	}
+})();
+var a=getDragClass({
+	el:'dragElement',
+	move:function(){
+		var subx=this.nowPoint.x-this.startPoint.x,
+			suby=this.nowPoint.y-this.startPoint.y,
+			id='div';
+		if(subx<-245 && subx>-295 && suby<-195 && 
+suby>-245){
+			id+=1;
+		}else if(subx<-245 && subx>-295 && suby>295 && 
+suby<345){
+			id+=3;
+		}else if(subx>245 && subx<295 && suby<-195 && 
+suby>-245){
+			id+=2;
+		}else if(subx>245 && subx<295 && suby>295 && 
+suby<345){
+			id+=4;
+		}else return;
+		id=document.getElementById(id);
+		id.style.border='1px solid #000';
+		id.style.background='red';
+	},
+	end:function(){
+		this.el.style.left='0';
+		this.el.style.top='0';
+	}
+});
 </script>
-</head>
-<body>
-  <button onclick="click_me()">click</button>
-  <script type="text/javascript">
-</script>
-<button onclick="post_it()"> Post it </button>
-<button onclick="get_it()"> Get it </button>
-</body>
-</html>
+
+
+<div id="GOOGLE_INPUT_CHEXT_FLAG" style="display: none; 
+"></div><div style="position: fixed; "><span 
+class="chext-kd-inputtools-div" style="z-index: 2147483644; 
+"></span></div></body></html>
+

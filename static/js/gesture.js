@@ -1,15 +1,17 @@
 var _isDown, _points, _g, _rc;
-var SupportsTouches=("creatTouch" in document);
+var SupportsTouches;
 function onLoadEvent()
 {
   _points = new Array();
 
+ SupportsTouches=("createTouch" in document);
   var canvas = document.getElementById('contentId');
   _rc = getCanvasRect(canvas); 
   _isDown = false;
   var      StartEvent = SupportsTouches ? "touchstart" : "mousedown",
   MoveEvent = SupportsTouches ? "touchmove" : "mousemove",
   EndEvent = SupportsTouches ? "touchend" : "mouseup";
+  //alert(StartEvent);
   $("#container").bind(StartEvent,function(event){
     mousePos=getMousePoint(event);
     mouseDownEvent(event.clientX,event.clientY);
