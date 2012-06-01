@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <title>Midas Reader</title>
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/css/index.css" />
+    <script type="text/javascript" src="/static/js/word_cloud.js"></script>
   </head>
   <body>
     <div class="left_part">
@@ -25,7 +27,7 @@
       <div class="book_list">
         {% if book_list %}
         <article> {% for book in book_list%}</article>
-        <a href="/reader/{{book.id}}/1/" ><img src="{{book.cover_path}}" alt="Cover of {{book.book_name}}" width="180" height="280"/></a>
+        <a href="/reader/{{book.id}}/1/" class="book"><img src="{{book.cover_path}}" alt="Cover of {{book.book_name}}" width="180" height="280"/></a>
         {%endfor%}
         {% else %}
         <article>Error, plz refresh.</article>
@@ -43,10 +45,12 @@
           {% if user.is_authenticated %}
           {{user.username}}
           {% else %}
-
           {% endif %}
         </nav>
       </div>
+      <canvas id="canvasId" width="300px" height="100px" style="display:none" >
+        Your browser doesn't support canvas.
+      </canvas>
       <div class="search">
         <input type="text" class="input"/>
         <input type="image" src="/static/pic/index/search_button.png" class="search_button"/>

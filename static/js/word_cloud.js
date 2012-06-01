@@ -1,5 +1,5 @@
-var screenSizeX = 435;
-var screenSizeY = 250;
+var screenSizeX = 300;
+var screenSizeY = 100;
 var fontType = "px Courier New";
 var hasRead = false
 var lastTxt, rect, newRect, bitree;
@@ -74,14 +74,14 @@ function init() {
     hasRead = true;
     lastTxt = new String();
     words = new Array();
-    var txt = "Othello|HTML5|Rve|Omega|nemo|Midas|Cloud|Intel|";
+    var txt = "程序设计|HTML5|编程之美|ACM|QQ|人人|微博|竞赛|社交化|博创杯|大神|Midas|中山大学";
     var i = 0, j = 0;
     while (j < txt.length) {
         var str = new String;
         var	num = new String;
         while (txt[j] != '|' && j < txt.length)
 	        str += txt[j++];		
-	    words.push(new Word(str, 20+getRandom(40), randomColor(), 0, 0, 0, 0, 0, 0));
+	    words.push(new Word(str, 14+i*2, randomColor(), 0, 0, 0, 0, 0, 0));
         j++; i++;
     }
     BubbleSort();
@@ -278,7 +278,11 @@ function paint() {
         splitRect();
     }
 }
-
+//***********************getRandom************************//
+function getRandom(n)
+{
+  return Math.round(Math.random(n))+1;
+}
 
 //***********************draw***************************//
 function draw() 
@@ -288,19 +292,16 @@ function draw()
     paint();
 }
 
-var canvas_flag=0;
 $(document).ready(function()
         {
-            $(".Sw").click(function()
+            $(".user_image").mouseover(function()
                 {
                     $("#canvasId").slideToggle("slow");
-                    if (canvas_flag==0)
-                    {
-                        draw();
-                    }
-                    if (canvas_flag % 2 == 0) $(".Sw").val("Hide Wordle");
-                    else $(".Sw").val("Show Wordle");
-                    canvas_flag++;
-                    if (canvas_flag == 101) canvas_flag=1;
+                    draw();
                 })
+            $(".user_image").mouseout(function()
+                                      {
+                                        $("#canvasId").hide();
+                                      }
+                                     )
         })

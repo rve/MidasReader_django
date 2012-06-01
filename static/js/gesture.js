@@ -1,5 +1,5 @@
 var _isDown, _points, _g, _rc;
-var SupportsTouches=("creatTouch" in document);
+var SupportsTouches=("createTouch" in document);
 function onLoadEvent()
 {
   _points = new Array();
