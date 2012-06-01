@@ -1,0 +1,23 @@
+.ceil
+{
+  position:fixed;
+  width:100%;
+  background:#676766;
+}
+
+#canvasId
+{
+  margin-top:50px;
+  margin-left:200px;
+}
+
+.logo
+{
+  margin-left:30px;
+}
+
+.second_part
+{
+  position:relative;
+  top:100px;
+}

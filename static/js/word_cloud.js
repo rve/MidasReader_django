@@ -1,5 +1,6 @@
-var screenSizeX = 300;
-var screenSizeY = 100;
+var tar_rec;
+var screenSizeX = 1000;
+var screenSizeY = 500;
 var fontType = "px Courier New";
 var hasRead = false
 var lastTxt, rect, newRect, bitree;
@@ -57,6 +58,21 @@ function BItree() {
 function dist(p1, p2) {
     return Math.sqrt((p1.x - p2.x) * (p1.x -p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
 }
+//**********************randomColor*******************//
+		function randomColor()
+		{
+			var colors = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+            var color = '#';
+            var brush = Math.random()*30;
+			for (var i = 0; i < 6; i++) 
+			{
+                index = Math.round(Math.random() * 15);
+                color += colors[index];
+            }
+			return color;
+		}
+
+
 //***********************Bublle Sort********************//
 function BubbleSort()
 {
@@ -71,17 +87,18 @@ function BubbleSort()
 }
 //***********************init***************************//
 function init() {
+tar_rec=new Array();
     hasRead = true;
     lastTxt = new String();
     words = new Array();
-    var txt = "程序设计|HTML5|编程之美|ACM|QQ|人人|微博|竞赛|社交化|博创杯|大神|Midas|中山大学";
+    var txt = "中山大学|程序设计|Midas|HTML5|社交化|ACM|编程之美|QQ|微博|人人|博创杯|竞赛|蔡骏|心理学|大学生|时事|易中天|算法|藏地密码|中国";
     var i = 0, j = 0;
     while (j < txt.length) {
         var str = new String;
         var	num = new String;
         while (txt[j] != '|' && j < txt.length)
 	        str += txt[j++];		
-	    words.push(new Word(str, 14+i*2, randomColor(), 0, 0, 0, 0, 0, 0));
+	    words.push(new Word(str, 100-i*4, randomColor(), 0, 0, 0, 0, 0, 0));
         j++; i++;
     }
     BubbleSort();
@@ -292,16 +309,51 @@ function draw()
     paint();
 }
 
-$(document).ready(function()
-        {
-            $(".user_image").mouseover(function()
-                {
-                    $("#canvasId").slideToggle("slow");
-                    draw();
-                })
-            $(".user_image").mouseout(function()
-                                      {
-                                        $("#canvasId").hide();
-                                      }
-                                     )
-        })
+
+
+//************************kmp*****************************//
+function kmp(str,pat)//find pat in str,return position
+{
+    var fail=new Array(pat.length);
+    var i=0,j;
+    fail[0]=-1;
+    for (j=1;j<pat.length;j++)
+    {
+        for (i=fail[j-1];i>=0 && pat[i+1]!=pat[j];i=fail[i]);
+        if (pat[i+1]==pat[j]) fail[j]=i+1;
+        else fail[j]=-1;
+    }
+
+    for (i=j=0;i<str.length && j<pat.length;i++)
+    {
+        if (str[i]==pat[j]) j++;
+        else
+            if (j>0)
+            {
+                j=fail[j-1]+1;
+                i--;
+            }
+    }
+    return j==pat.length?(i-pat.length):-1;
+}
+
+
+//*******************************high_light*********************//
+function high_light()
+{
+  var pat=document.getElementById("search_id").value;
+  var cxt=document.getElementById("canvasId").getContext("2d");
+  for (var i=0;i<words.length;i++)
+  if (pat.length!=0 && kmp(words[i].str,pat)!=-1)
+    {
+        cxt.font = words[i].size + fontType;
+        cxt.fillStyle = "#FEFF00";
+        cxt.fillText(words[i].str, words[i].x - words[i].offsetX, words[i].y + words[i].sizeY - words[i].offsetY);
+    }
+    else
+      {
+        cxt.font = words[i].size + fontType;
+        cxt.fillStyle = randomColor();
+        cxt.fillText(words[i].str, words[i].x - words[i].offsetX, words[i].y + words[i].sizeY - words[i].offsetY);
+      }
+}

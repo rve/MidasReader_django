@@ -126,4 +126,6 @@ def print_it(request):
             raise Http404
         return HttpResponse(simplejson.dumps(jsonDict),mimetype='application/json')
     return HttpResponse(simplejson.dumps(jsonDice),mimetype='application/javascript')
+def personal(request):
+    return render_to_response('personal.html')
 
