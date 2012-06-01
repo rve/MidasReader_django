@@ -32,14 +32,14 @@ function comment_show_up()
   $(".whole").slideToggle("slow");
   if (comment_up_flag==0)
     {
-      s.scrollTop=lastScrollTop;
+      scroll.scrollTop=lastScrollTop;
       document.getElementById("wholeId").style.backgroundColor="#F4F6F3";
       timer=setInterval(scrollstart,100);
       $(".comment_show_up").css("left","-10px");
     }
     else
       {
-        lastScrollTop=s.scrollTop;
+        lastScrollTop=scroll.scrollTop;
         clearInterval(timer);
         $(".comment_show_up").css("left","0px");
       }
@@ -50,3 +50,9 @@ $(function()
   {
     $(".tipTip").tipTip();
   });
+
+$(document).ready(function()
+                  {
+                    var h=$(".content").height();
+                    if (h<400) $(".content").css("height","400px");
+                  })

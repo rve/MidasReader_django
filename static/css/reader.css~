@@ -58,22 +58,21 @@ body {
   margin-top:30px;
 }
 
-div.whole
+.whole
 {
-  top:0px;
-left:0px;
+  top:0;
   width:100%;
   text-align:center;
   position:fixed;
   display:none;
 }
 
-div.scroll
+  div.scroll
 {
 	overflow:hidden;
 	width:100%;
 	line-height:20px;
-    height:20px;
+	height:20px;
 	font-size:20px;
 	text-align:center;
 }

@@ -41,6 +41,7 @@ def index(request):
         })
     return HttpResponse(t.render(c))
 def reader(request, book_id, page):
+    if page == 0 : page=1;
 #get book
     try:
         book_instance = Book.objects.get(pk=book_id)

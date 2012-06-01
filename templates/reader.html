@@ -26,6 +26,9 @@ function(data) {
 });
 }
       function post_it_back(){
+        if (page_num == 1) 
+        {
+          page_num = 2;}
         //console.log(page_num);
         $.post("/print/", {
 current_page:page_num-1
@@ -102,7 +105,7 @@ function startTimer(){
         <img src="/static/pic/title_line.png"/>
       </div>
       <div class="page"> 
-        <div class="content" id="contentId" >
+        <div class="content" id="contentId">
           {{text}}
         </div>
         <hr/><hr/>
