@@ -1,23 +1,26 @@
 <!DOCTYPE HTML>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="/static/css/login.css" />
-</head>
-<body>
-    <img src="/static/pic/logo.png" class="logo"/>
-  <form method="post" name="post"  class="login">
-          <input type="text" id="username" name="username" placeholder="Username" class="input username" autofocus/>
-          <br/>
-          <input type="password" id="password" name="password" class="input password"/>
-          <br/>
-          <input type="image" src="/static/pic/index/login.png" onclick="document.post.submit()" class="submit"/>
-          <input type="submit" style="display:none"/>
-        </form>
-        <img src="/static/pic/index/regist.png" onclick="alert('Regist page')"class="regist"/>
-        <img src="/static/pic/index/forget.png" onclick="alert('Forget password')" class="forget_pas"/>
-  </form>
+  </head>
+  <body>
+    <div class="whole">
+      <img src="/static/pic/logo.png" class="logo"/>
+      <form method="post" name="post"  class="login">
+        <article class="article">User name:</article>
+        <input type="text" id="username" name="username" placeholder="Username" class="input username" autofocus/>
+        <article class="article">Password:</article>
+        <input type="password" id="password" name="password" class="input password"/>
+        <input type="submit" style="display:none"/>
+      </form>
+      <a href="" class="forget">Forget?</a>
+      <div onclick="document.post.submit()" class="button">Login</div>
+      <a href="#" class="button">Regist</a>
+    </form>
+  </div>
+
 </body>
 </html>
 

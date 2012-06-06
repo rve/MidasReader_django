@@ -13,7 +13,7 @@
           {
           $(".tipTip").tipTip();
           });
-    </script>
+</script>
   </head>
   <body>
     <div class="left_part">
@@ -53,6 +53,8 @@
           {% if user.is_authenticated %}
           {{user.username}}
           {% else %}
+          <a href="/login" class="button">Login</a>
+          <a href="#" class="button">Regist</a>
           {% endif %}
         </nav>
       </div>
@@ -60,7 +62,7 @@
         Your browser doesn't support canvas.
       </canvas>
       <div class="search">
-        <input type="text" class="input"/>
+        <input type="text" class="input" placeholder="To search"/>
         <input type="image" src="/static/pic/index/search_button.png" class="search_button"/>
       </div> 
       <div class="foot" style="display:none">
