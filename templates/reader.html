@@ -70,7 +70,7 @@ function startTimer(){
 <link rel="stylesheet" type="text/css" href="/static/css/tipTip.css" />
 <link rel="stylesheet" href="/static/css/reader.css" />
   </head>
-  <body onload="SetArray(100);init2();startTimer();onLoadEvent()" >
+  <body onload="def();init2();startTimer();onLoadEvent()" >
 
     <!--rolling comments-->
     <div class="whole" id="wholeId" onmouseover="stop()" onmouseout="goon()">
@@ -130,7 +130,7 @@ function startTimer(){
       </a>
       <div>
         <a href="/reader/{{book_id}}/{{prev_page}}" id="prev_page" onclick="post_it_back()" class="button">
-        <br /><br />上<br/>一<br/>页
+          <br /><br />上<br/>一<br/>页
         </a>
       </div>
     </div>
@@ -138,24 +138,49 @@ function startTimer(){
     <img src="/static/pic/pen.png" class="note tipTip" title="Take note"/>
 
     <!-- note part-->
-    <div id="noteId" style="display:none"/>
-      <input onclick="Selectall()" type="button" value="All" class="buttoncss"/>
-      <input type="button" class="save" value="Save" >
-      <div class="word">Add Note:
-        <input type="text" name="addtext" id="addId" size="15"/>
-        <input onclick="AddText(page_num,document.all.addtext.value)" type="button" value="Add" class="buttoncss"/>
+    <div class="RTE" style="display:none">
+      <div style="width:500px; text-align:left; margin-bottom:10px ">
+        <input type="button" id="bold" style="height:21px; width:21px; font-weight:bold;" value="B" onClick="fontEdit('bold')" />
+        <input type="button" id="italic" style="height:21px; width:21px; font-style:italic;" value="I" onClick="fontEdit('italic')" />
+        <input type="button" id="underline" style="height:21px; width:21px; text-decoration:underline;" value="U" onClick="fontEdit('underline')" /> | 
+        <input type="button" style="height:21px; width:21px;"value="L" onClick="fontEdit('justifyleft')" title="align left" />
+        <input type="button" style="height:21px; width:21px;"value="C" onClick="fontEdit('justifycenter')" title="center" />
+        <input type="button" style="height:21px; width:21px;"value="R" onClick="fontEdit('justifyright')" title="align right" /> | 
+        <select id="fonts" onChange="fontEdit('fontname',this[this.selectedIndex].value)">
+          <option value="Arial">Arial</option>
+          <option value="Comic Sans MS">Comic Sans MS</option>
+          <option value="Courier New">Courier New</option>
+          <option value="Monotype Corsiva">Monotype</option>
+          <option value="Tahoma">Tahoma</option>
+          <option value="Times">Times</option>
+        </select>
+        <select id="size" onChange="fontEdit('fontsize',this[this.selectedIndex].value)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <select id="color" onChange="fontEdit('ForeColor',this[this.selectedIndex].value)">
+          <option value="black">black</option>
+          <option style="color:red;" value="red">red</option>
+          <option style="color:blue;" value="blue">blue</option>
+          <option style="color:green;" value="green">green</option>
+          <option style="color:pink;" value="pink">pink</option>
+        </select> | 
+        <input type="button" style="height:21px; width:21px;"value="1" onClick="fontEdit('insertorderedlist')" title="Numbered List" />
+        <input type="button" style="height:21px; width:21px;"value="?" onClick="fontEdit('insertunorderedlist')" title="Bullets List" />
+        <input type="button" style="height:21px; width:21px;"value="?" onClick="fontEdit('outdent')" title="Outdent" />
+        <input type="button" style="height:21px; width:21px;"value="?" onClick="fontEdit('indent')" title="Indent" />
       </div>
-      <div class="buttonlist">
-        <input type="button" class="strong" value="B"/>
-        <input type="button" class="italic" value="I"/>
-      </div>
-      <textarea onkeyup="SetPage()" id="txtid" rows="10" cols="30" ></textarea>
+      <iframe id="textEditor" style="width:500px; height:170px;">
+      </iframe>
     </div>
 
     <!--appear comment-->
     <div id="CNID" class="C_and_N" style="display:none">
       <img src="/static/pic/comment.png" class="comment tipTip" title="Comment"/>
     </div>
-    <!--loading -->
+
   </body>
 </html>
