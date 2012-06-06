@@ -125,7 +125,6 @@ div.scroll
   -moz-border-radius:3px;
   border-radius:3px;
   border: 1px #E1E0E0 solid; 
-  background-image:url(../images/bluebuttonbg.gif); 
   background-color: #F3F1F2; 
   cursor: hand; 
   font-style: normal ; 
@@ -133,10 +132,87 @@ div.scroll
   height:22px; 
 } 
 
+.strong
+{
+  font-weight:bold;
+}
+
+.italic
+{
+  font-style:italic;
+}
+
 .word
 {
-font-family: "tahoma", "微软雅黑"; 
+  font-family: "tahoma", "微软雅黑"; 
   font-size:9pt; 
   color: #716161; 
   display:inline;
+}
+
+
+.button {
+  position: relative;
+  display: inline-block;
+
+  min-width: 20px;
+  height:150px;
+  padding: 10px 15px;
+  margin: 2px 2px;
+
+  background-color:#F3F1F2;
+
+  color: #C2C2C2;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+  text-shadow: 0px -1px 0px rgba(228,228,228,0.5);
+
+  border: 1px solid;
+  border-color:#E4E4E4;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+
+  -webkit-box-shadow: inset 0px -4px 5px rgba(228,228,228,0.2),
+  inset 0px 1px 5px rgba(228,228,228,0.2),
+  /**/
+  0px 2px 0px #C2C2C2,
+  0px 4px 0px #C2C2C2,
+  0px 6px 0px #C2C2C2,
+  /**/
+  0px 5px 5px rgba(228,228,228,0.5);
+}
+
+.button:hover {
+  background-color: #8AC5FD;
+
+  background-image: -webkit-gradient(
+  linear,
+  left top,
+  left bottom,
+  color-stop(0, #FFFFFF),
+  color-stop(0.49, #E1E1E1),
+  color-stop(0.5, #E4E4E4),
+  color-stop(1, #C2C2C2)
+  );
+}
+
+.button:active {
+  top: 4px;
+  box-shadow: 		inset 0px 4px 5px rgba(228,228,228,0.4),
+  inset 0px -1px 5px rgba(228,228,228,0.2),
+  /**/
+  0px 2px 0px #E4E4E4,
+  /**/
+  0px 4px 5px rgba(0,0,0,0.5);
+
+  -webkit-box-shadow: inset 0px 4px 5px rgba(228,228,228,0.4),
+  inset 0px -1px 5px rgba(228,228,228,0.2),
+  /**/
+  0px 2px 0px #E4E4E4,
+  /**/
+  0px 4px 5px rgba(228,228,228,0.5);
 }

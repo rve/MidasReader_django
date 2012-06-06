@@ -89,7 +89,7 @@ function startTimer(){
       <input type="button" class="addCm" value="Comment"/>
       <input type="button" class="exitComment" value="Close"/>
       <br />
-      <textarea id="commentId" rows="4" class="commentTekjkxt" cols="30"></textarea>
+      <textarea id="commentId" rows="4" class="commentText" ></textarea>
     </div>
     <div class="nearby_comment" style="display:none">
       <img src="/static/pic/nearby_comment_bg.png" class="nearby_comment_bg"/>
@@ -125,11 +125,13 @@ function startTimer(){
 
     <!--page_button part-->
     <div class="page_button">
+      <a href="/reader/{{book_id}}/{{next_page}}" id="next_page" onclick="post_it()" class="button">
+        <br /><br />下<br/>一<br/>页
+      </a>
       <div>
-        <a href="/reader/{{book_id}}/{{next_page}}" id="next_page" onclick="post_it()"><img src="/static/pic/next_page.png" /></a>
-      </div>
-      <div>
-        <a href="/reader/{{book_id}}/{{prev_page}}" id="prev_page" onclick="post_it_back()"><img src="/static/pic/prev_page.png" class="prev_page" /></a>
+        <a href="/reader/{{book_id}}/{{prev_page}}" id="prev_page" onclick="post_it_back()" class="button">
+        <br /><br />上<br/>一<br/>页
+        </a>
       </div>
     </div>
 
@@ -138,15 +140,16 @@ function startTimer(){
     <!-- note part-->
     <div id="noteId" style="display:none"/>
       <input onclick="Selectall()" type="button" value="All" class="buttoncss"/>
-        <input type="button" class="save" value="Save" >
+      <input type="button" class="save" value="Save" >
       <div class="word">Add Note:
         <input type="text" name="addtext" id="addId" size="15"/>
+        <input onclick="AddText(page_num,document.all.addtext.value)" type="button" value="Add" class="buttoncss"/>
       </div>
-
-      <input onclick="AddText(page_num,document.all.addtext.value)" type="button" value="Add" class="buttoncss"/>
-      <br/>
-      <textarea onkeyup="SetPage()" id="txtid" rows="10" cols="45" ></textarea>
-      <br/>
+      <div class="buttonlist">
+        <input type="button" class="strong" value="B"/>
+        <input type="button" class="italic" value="I"/>
+      </div>
+      <textarea onkeyup="SetPage()" id="txtid" rows="10" cols="30" ></textarea>
     </div>
 
     <!--appear comment-->
