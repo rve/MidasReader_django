@@ -9,12 +9,9 @@
   <body onload="draw()">
     <div class="ceil">
       <img src="/static/pic/logo.png" class="logo" />
-    </div>
-    <div class="second_part">
-      <a href="/index">Home Page</a>
-      <div class="search">
-        <input type="text" onkeyup="high_light()" id="search_id"/>
-      </div>
+      <a href="/index" class="home_page">主页</a>
+      <input type="text" onkeyup="high_light()" id="search_id" placeholder="找找TA的特点？" class="search"/>
+      <article class="username">{{user.username}}</article>
     </div>
     <canvas id="canvasId" width="1000px" height="500px">
       Your browser doesn't support canvas.

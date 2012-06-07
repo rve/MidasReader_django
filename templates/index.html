@@ -4,22 +4,12 @@
     <meta charset="UTF-8">
     <title>Midas Reader</title>
     <script type="text/javascript" src="/static/js/jquery.js"></script>
-    <script type="text/javascript" src="/static/js/jquery.tipTip.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/css/index.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/tipTip.css" />
-    <script type="text/javascript" src="/static/js/word_cloud.js"></script>
-    <script type="text/javascript">
-      $(function()
-          {
-          $(".tipTip").tipTip();
-          });
-</script>
   </head>
   <body>
     <div class="left_part">
       <!--Activity part-->
       <div class="activity">
-        <!--  <img src="/static/pic/index/book_tag1.png" class="tag1" />
         <img src="/static/pic/index/book_tag2.png" class="tag2" />-->
         <div class="act_block">
           <a href="/templates/act1.html"><img src="/static/pic/index/activity1.png" width="300" height="200" class="act1"></a>
@@ -44,11 +34,11 @@
     </div>
 
     <div class="right_part"> 
-      <div>
-        <img src="/static/pic/index/logo.png" class="logo" height="50"/>
-      </div>
+      <img src="/static/pic/index/logo.png" class="logo" height="50"/>
       <div class="user">
-        <img src="/static/pic/index/user.png" class="user_image"/>
+        <a href="/personal">
+          <img src="/static/pic/index/user.png" class="user_image"/>
+        </a>
         <nav class="user_name">
           {% if user.is_authenticated %}
           {{user.username}}
@@ -65,11 +55,6 @@
         <input type="text" class="input" placeholder="To search"/>
         <input type="image" src="/static/pic/index/search_button.png" class="search_button"/>
       </div> 
-      <div class="foot" style="display:none">
-        <div class="tipTip" title="QQ:<br/>Omega:397663279<br/>rve:1829871268<br/>nemomojie:312881764">Contact us</div>
-        <div class="tipTip" title="By Sun Yat-Sen University">CopyRight Clarify</div>
-        <div class="tipTip" title="Contact us by QQ">Feedback</div>
-      </div>
     </div>
 
   </body>
