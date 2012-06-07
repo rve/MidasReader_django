@@ -339,21 +339,38 @@ function kmp(str,pat)//find pat in str,return position
 
 
 //*******************************high_light*********************//
+function high_light(i)
+{
+  var cxt=document.getElementById("canvasId").getContext("2d");
+  cxt.font = words[i].size + fontType;
+  cxt.fillStyle = "#FFFFFF";
+  cxt.fillText(words[i].str, words[i].x - words[i].offsetX, words[i].y + words[i].sizeY - words[i].offsetY);
+  cxt.fillStyle = "#FEFF00";
+  cxt.fillText(words[i].str, words[i].x - words[i].offsetX, words[i].y + words[i].sizeY - words[i].offsetY);
+}
+
+//*****************************recover*********************//
+function recover(i)
+{
+  var cxt=document.getElementById("canvasId").getContext("2d");
+  cxt.font = words[i].size + fontType;
+  cxt.fillStyle = "#FFFFFF";
+  cxt.fillText(words[i].str, words[i].x - words[i].offsetX, words[i].y + words[i].sizeY - words[i].offsetY);
+  cxt.fillStyle = randomColor();
+  cxt.fillText(words[i].str, words[i].x - words[i].offsetX, words[i].y + words[i].sizeY - words[i].offsetY);
+}
+
+//**************************search_word*********************//
 var last_pat=new String;
-function high_light()
+function search_word()
 {
   var pat=document.getElementById("search_id").value;
-  var cxt=document.getElementById("canvasId").getContext("2d");
   if (pat==last_pat) return ;
   if (last_pat.length!=0)
     for (var i=0;i<words.length;i++)
   if (kmp(words[i].str,last_pat)!=-1)
     {
-      cxt.font = words[i].size + fontType;
-      cxt.fillStyle = "#FFFFFF";
-      cxt.fillText(words[i].str, words[i].x - words[i].offsetX, words[i].y + words[i].sizeY - words[i].offsetY);
-      cxt.fillStyle = randomColor();
-      cxt.fillText(words[i].str, words[i].x - words[i].offsetX, words[i].y + words[i].sizeY - words[i].offsetY);
+      recover(i);
     }
 
     last_pat=pat;
@@ -361,10 +378,42 @@ function high_light()
     for (var i=0;i<words.length;i++)
     if (pat.length!=0 && kmp(words[i].str,pat)!=-1)
       {
-        cxt.font = words[i].size + fontType;
-        cxt.fillStyle = "#FFFFFF";
-        cxt.fillText(words[i].str, words[i].x - words[i].offsetX, words[i].y + words[i].sizeY - words[i].offsetY);
-        cxt.fillStyle = "#FEFF00";
-        cxt.fillText(words[i].str, words[i].x - words[i].offsetX, words[i].y + words[i].sizeY - words[i].offsetY);
+        high_light(i);
       }
+}
+
+//*************************mousemove************************//
+var last_goal=-1;
+function mouse_move(event)
+{
+  var pos={x:event.offsetX,y:event.offsetY};
+  var goal=-1;
+  for (var i=words.length-1;i>=0;i--)
+  {
+    if (pos.x>=words[i].x && pos.x<=words[i].sizeX+words[i].x)
+      if (pos.y>=words[i].y && pos.y<=words[i].sizeY+words[i].y)
+        {
+          goal=i;
+          break;
+        }
+  }
+  if (goal==last_goal) return ;
+  var pat=document.getElementById("search_id").value;
+  if (pat.length!=0 && last_goal!=-1 && kmp(words[last_goal].str,pat)!=-1);
+  else 
+    if (last_goal!=-1) recover(last_goal);
+  if (goal!=-1) high_light(goal);
+  last_goal=goal;
+}
+
+//****************************recover_last****************//
+function recover_last()
+{
+  if (last_goal!=-1) 
+    {
+      var pat=document.getElementById("search_id").value;
+      if (pat.length==0 || (pat.length!=0 && kmp (words[last_goal].str,pat)!=-1))
+        recover(last_goal);
+      last_goal=-1;
+    }
 }

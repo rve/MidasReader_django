@@ -10,10 +10,10 @@
     <div class="ceil">
       <img src="/static/pic/logo.png" class="logo" />
       <a href="/index" class="home_page">主页</a>
-      <input type="text" onkeyup="high_light()" id="search_id" placeholder="找找TA的特点？" class="search"/>
+      <input type="text" onkeyup="search_word()" id="search_id" placeholder="找找TA的特点？" class="search"/>
       <article class="username">{{user.username}}</article>
     </div>
-    <canvas id="canvasId" width="1000px" height="500px">
+    <canvas id="canvasId" width="1000px" height="500px" onmousemove="mouse_move(event)" onmouseout="recover_last()">
       Your browser doesn't support canvas.
     </canvas>
   </body>

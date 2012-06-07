@@ -1,19 +1,29 @@
-var _isDown, _points, _g, _rc;
+var _isDown, _points, _g, _rc,mousePos;
 var SupportsTouches;
 function onLoadEvent()
 {
   _points = new Array();
   SupportsTouches=("createTouch" in document);
   _isDown = false;
+  mousePos={x:0,y:0};
   var goal=document.getElementById("container");
   goal.addEventListener("touchstart",touchStart,false);
   goal.addEventListener("touchmove",touchMove,false);
   goal.addEventListener("touchend",touchEnd,false);
-  if (!SupportsTouches) $("#container").bind("click",function(event)
-                                             {
-                                               mousePos={x:event.clientX,y:event.clientY};
-                                               comment_show();
-                                             })
+  if (!SupportsTouches) 
+    {
+      $("#contentId").bind("click",function(event)
+                           {
+                             mousePos={x:event.clientX,y:event.clientY};
+                             comment_show();
+                           })
+      $("#contentId").bind("mousemove",function(event)
+                           {
+                             if (distance(LastMousePos,mousePos)>50) 
+                               $(".C_and_N").hide();
+                             mousePos={x:event.clientX,y:event.clientY};
+                           })
+    }
 }
 
 var startX,startY;
@@ -73,34 +83,6 @@ function Point(x,y)
 {
   return {x:x,y:y};
 }
-
-function getMousePoint(ev)
-{
-  var x = y = 0,
-  doc = document.documentElement,
-  body = document.body;
-  if(!ev) ev=window.event;
-  if (window.pageYoffset) 
-    {
-      x = window.pageXOffset;
-      y = window.pageYOffset;
-    }
-    else
-      {
-        x = (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);
-        y = (doc && doc.scrollTop  || body && body.scrollTop  || 0) - (doc && doc.clientTop  || body && body.clientTop  || 0);
-      }
-      if(SupportsTouches)
-        {
-          var evt = ev.touches.item(0);//仅支持单点触摸,第一个触摸点
-          x=evt.pageX;
-          y=evt.pageY;
-        }else{
-          x += ev.clientX;
-          y += ev.clientY;
-        }
-        return {'x' : x, 'y' : y};
-};
 
 function distance(a,b)
 {

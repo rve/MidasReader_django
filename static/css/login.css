@@ -19,18 +19,26 @@
   margin-left:50px;
 }
 
+.login
+{
+  display:inline;
+}
+
 .whole
 {
-  position:fixed;
-  left:45%;
-  top:30%;
+  margin-top:200px;
+  margin-left:400px;
 }
 
 .forget
 {
-  position:absolute;
-  left:210px;
-  top:120px;
+  color: #C2C2C2;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  position:relative;
+  left:5px;
+  top:-30px;
 }
 
 body
@@ -46,77 +54,69 @@ body
 .password
 {
   margin-top:5px;
+  display:block;
 }
 
 .button {
-	position: relative;
-	display: inline-block;
-	
-	min-width: 60px;
-	padding: 10px 15px;
-	margin: 0px 2px;
-	
-	background-color: #3E9ED6;
-	background-image: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		color-stop(0, #E4E4E4),
-		color-stop(0.5, #C5C5C5),
-		color-stop(1, #C2C2C2)
-	);
+  position: relative;
+  display: inline-block;
 
-	color: #000000;
-	font-weight: bold;
-	font-size: 18px;
-	text-decoration: none;
-	text-align: center;
-	line-height: 1;
-	text-shadow: 0px -1px 0px rgba(228,228,228,0.5);
-	
-	border: 1px solid;
-	border-color:#E4E4E4;
-	border-radius: 8px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-						
-	-webkit-box-shadow: inset 0px -4px 5px rgba(228,228,228,0.2),
-						inset 0px 1px 5px rgba(228,228,228,0.2),
-						/**/
-						0px 2px 0px #C2C2C2,
-						0px 4px 0px #C2C2C2,
-						0px 6px 0px #C2C2C2,
-						/**/
-						0px 5px 5px rgba(228,228,228,0.5);
+  min-width: 90px;
+  padding: 10px 0px;
+  margin: 0px 2px;
+  background:#F3F3F3;
+
+  color: #C2C2C2;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+  text-shadow: 0px -1px 0px rgba(228,228,228,0.5);
+
+  border: 1px solid;
+  border-color:#E4E4E4;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+
+  -webkit-box-shadow: inset 0px -4px 5px rgba(228,228,228,0.2),
+  inset 0px 1px 5px rgba(228,228,228,0.2),
+  /**/
+  0px 2px 0px #C2C2C2,
+  0px 4px 0px #C2C2C2,
+  0px 6px 0px #C2C2C2,
+  /**/
+  0px 5px 5px rgba(228,228,228,0.5);
 }
 
 .button:hover {
-	background-color: #8AC5FD;
-	
-	background-image: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		color-stop(0, #FFFFFF),
-		color-stop(0.49, #E1E1E1),
-		color-stop(0.5, #E4E4E4),
-		color-stop(1, #C2C2C2)
-	);
+  background-color: #8AC5FD;
+
+  background-image: -webkit-gradient(
+  linear,
+  left top,
+  left bottom,
+  color-stop(0, #FFFFFF),
+  color-stop(0.49, #E1E1E1),
+  color-stop(0.5, #E4E4E4),
+  color-stop(1, #C2C2C2)
+  );
 }
 
 .button:active {
-	top: 4px;
-	box-shadow: 		inset 0px 4px 5px rgba(255,255,255,0.4),
-						inset 0px -1px 5px rgba(255,255,255,0.2),
-						/**/
-						0px 2px 0px #1e4766,
-						/**/
-						0px 4px 5px rgba(0,0,0,0.5);
-						
-	-webkit-box-shadow: inset 0px 4px 5px rgba(255,255,255,0.4),
-						inset 0px -1px 5px rgba(255,255,255,0.2),
-						/**/
-						0px 2px 0px #1e4766,
-						/**/
-						0px 4px 5px rgba(0,0,0,0.5);
+  top: 4px;
+  box-shadow: 		inset 0px 4px 5px rgba(255,255,255,0.4),
+  inset 0px -1px 5px rgba(255,255,255,0.2),
+  /**/
+  0px 2px 0px #1e4766,
+  /**/
+  0px 4px 5px rgba(0,0,0,0.5);
+
+  -webkit-box-shadow: inset 0px 4px 5px rgba(255,255,255,0.4),
+  inset 0px -1px 5px rgba(255,255,255,0.2),
+  /**/
+  0px 2px 0px #1e4766,
+  /**/
+  0px 4px 5px rgba(0,0,0,0.5);
 }
